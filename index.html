@@ -275,7 +275,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 }
 
 /* FINAL REFINEMENTS · 25 SEP 2026 */
-.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transform:scale(1.015);filter:saturate(.88) contrast(1.02)}
+.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transform:scale(1.015);filter:saturate(.88) contrast(1.02) brightness(.88)}
 .hero-overlay{background:linear-gradient(90deg,rgba(7,7,5,.58),rgba(7,7,5,.18) 68%,rgba(7,7,5,.10)),linear-gradient(0deg,rgba(7,7,5,.70),transparent 55%)}
 .hero-grid{padding-top:104px;padding-bottom:38px}
 .hero-minimal{margin-top:auto;max-width:1180px}
@@ -477,6 +477,15 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 .disc-index{font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.46);margin-bottom:8px}
 .disc-name{font-size:clamp(34px,4.5vw,72px);margin-bottom:8px}
 .disc-desc{max-width:520px;font-size:11px;line-height:1.45;color:rgba(255,255,255,.72)}
+/* DISCIPLINE DESKTOP FIX: keep title/copy below the selector instead of overlapping it */
+@media(min-width:951px){
+  .disc-panel-info{overflow:hidden;}
+  .disc-tabs{flex:none;}
+  .disc-copy{position:static;left:auto;right:auto;bottom:auto;margin-top:auto;padding-top:34px;}
+  .disc-name{font-size:clamp(34px,3.2vw,54px);line-height:.95;margin-bottom:12px;}
+  .disc-desc{max-width:520px;font-size:11px;line-height:1.5;}
+}
+
 /* sectors breathing room */
 #sectors{padding-top:clamp(150px,14vw,220px);padding-bottom:clamp(150px,14vw,220px)}
 /* experience / founders: image-led 4:5 cards */
@@ -675,6 +684,9 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 .stagger>*:nth-child(5){transition-delay:.28s}
 .stagger>*:nth-child(6){transition-delay:.35s}
 
+/* Heading reveal via clip-path: headline sweeps into view instead of just fading */
+/* Heading reveal removed: headings render normally. */
+.mask-reveal,.mask-reveal.in{clip-path:none;transition:none}
 
 /* Count-up number */
 .countup{display:inline-block;font-variant-numeric:tabular-nums}
@@ -684,6 +696,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 
 @media(prefers-reduced-motion:reduce){
   .stagger>*{transition:none;opacity:1;transform:none}
+  .mask-reveal{transition:none;clip-path:none}
 }
 
 /* Footer: rebuilt as a proper sitemap + contact block, replacing the single thin row */
@@ -700,6 +713,51 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;row-gap:36px}.footer-brand-col{grid-column:1/-1}}
 @media(max-width:560px){.footer-top{grid-template-columns:1fr;row-gap:32px;padding:52px var(--pad) 36px}.footer-bottom{flex-direction:column;gap:8px}}
 
+/* MOBILE DISCIPLINE SLIDER + CONTACT FORM */
+.disc-mobile-meta{display:none}
+.contact-email{display:inline-block;margin-top:28px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:7px}
+.contact-form{border-top:1px solid rgba(255,255,255,.18);padding-top:28px;display:flex;flex-direction:column;gap:18px}
+.contact-form label{display:flex;flex-direction:column;gap:8px}
+.contact-form label span{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+.contact-form input,.contact-form textarea{width:100%;border:0;border-bottom:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;padding:10px 0;font:inherit;font-size:13px;outline:none;resize:vertical;border-radius:0}
+.contact-form input:focus,.contact-form textarea:focus{border-bottom-color:var(--ember)}
+.contact-form textarea{min-height:92px}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.25)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.form-submit{width:max-content;background:transparent;cursor:pointer;margin-top:4px}
+.form-submit:hover{background:var(--ember)}
+.form-note{margin:0;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+@media(max-width:700px){
+  .hero{min-height:calc(100svh + 72px);margin-top:-36px}
+  .hero-grid{padding-top:128px;padding-bottom:54px}
+  .hero-media{inset:-42px 0 -42px}
+  .hero-media video{transform:scale(1.03);filter:saturate(.86) contrast(1.03) brightness(.82)}
+  .hero-overlay{background:linear-gradient(90deg,rgba(6,7,5,.67),rgba(6,7,5,.24) 72%,rgba(6,7,5,.10)),linear-gradient(0deg,rgba(6,7,5,.76),rgba(6,7,5,.08) 62%)}
+  .discipline-stage{display:flex;flex-direction:column;min-height:0;background:#0d0e0c}
+  .disc-panel-media{order:1;min-height:54vh!important;height:54vh;border-bottom:1px solid var(--line-dark)}
+  .disc-panel-info{order:2;padding:0;border:0;display:block}
+  .disc-collage{display:flex;grid-template-columns:none;grid-template-rows:none;gap:0;padding:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .disc-collage::-webkit-scrollbar{display:none}
+  .disc-collage-img,.disc-collage-img:first-child{position:relative;inset:auto;flex:0 0 100%;width:100%;height:100%;grid-row:auto;object-fit:cover;opacity:1;scroll-snap-align:start;transform:none!important;filter:saturate(.74) contrast(1.03)}
+  .disc-collage:after{display:none}
+  .disc-collage-label{left:16px;bottom:16px;font-size:7px;padding:8px 9px;background:rgba(10,11,9,.62)}
+  .disc-mobile-meta{position:absolute;display:flex;align-items:center;justify-content:space-between;left:16px;right:16px;top:16px;z-index:5;font-family:var(--mono);font-size:8px;letter-spacing:.13em;color:rgba(255,255,255,.72);text-transform:uppercase;pointer-events:none}
+  .disc-mobile-dots{display:flex;gap:5px}.disc-mobile-dots i{display:block;width:5px;height:5px;border:1px solid rgba(255,255,255,.6);background:transparent}.disc-mobile-dots i.active{background:var(--ember);border-color:var(--ember)}
+  .disc-tabs{display:flex;flex-direction:row;overflow-x:auto;scrollbar-width:none;padding:0 16px;border-bottom:1px solid var(--line-dark);gap:0}
+  .disc-tabs::-webkit-scrollbar{display:none}
+  .disc-tab{flex:0 0 auto;padding:17px 18px!important;border:0!important;border-top:2px solid transparent!important;font-family:var(--mono);font-size:8px!important;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.45);white-space:nowrap;gap:0}
+  .disc-tab:before,.disc-tab-icon,.disc-tab.active:after{display:none}
+  .disc-tab.active{color:#fff;background:transparent;border-top-color:var(--ember)!important}
+  .disc-tab:nth-child(2).active{border-top-color:var(--moss)!important}.disc-tab:nth-child(3).active{border-top-color:var(--ember)!important}.disc-tab:nth-child(4).active{border-top-color:var(--brass)!important}
+  .disc-copy{position:static;padding:22px 18px 30px}
+  .disc-index{display:none}
+  .disc-name{font-size:34px!important;line-height:.95;margin:0 0 10px!important;letter-spacing:-.05em}
+  .disc-desc{font-size:11px!important;line-height:1.5;max-width:100%;color:rgba(255,255,255,.58)}
+  .form-row{grid-template-columns:1fr;gap:18px}
+  .contact-email{margin-top:22px}
+  .contact-form{margin-top:42px;padding-top:22px}
+  .form-submit{width:100%}
+}
 /* DISCIPLINE COLLAGE PASS · 27 SEP 2026 */
 .disc-panel-media{overflow:hidden;background:#11120f}
 .disc-collage{position:absolute;inset:0;display:grid;grid-template-columns:1.12fr .88fr;grid-template-rows:1fr 1fr;gap:5px;padding:5px;background:#11120f}
@@ -790,6 +848,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
           <img class="disc-collage-img is-active" id="discImg3" src="assets/discipline-construction-03.jpeg" alt="Construction project in progress">
           <img class="disc-collage-img is-active" id="discImg4" src="assets/discipline-construction-04.jpeg" alt="Construction project in progress">
           <div class="disc-collage-label"><span id="discImageLabel">CONSTRUCTION / IN PROGRESS</span></div>
+          <div class="disc-mobile-meta"><span id="discMobileMeta">01 / CONSTRUCTION</span><span class="disc-mobile-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i></span></div>
         </div>
       </div>
       <div class="disc-panel-info">
@@ -964,16 +1023,19 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
     <div class="reveal">
       <div class="kicker light">08 / CONTACT</div>
       <h2 class="display">Have a project in <em>mind?</em></h2>
-      <p class="body-copy" style="color:rgba(255,255,255,.58);margin-top:22px">Get in touch to discuss construction, refurbishment, fit-out or heritage work across the UK and Ireland.</p>
+      <p class="body-copy" style="color:rgba(255,255,255,.58);margin-top:22px">Get in touch to discuss construction, refurbishment, fit-out or heritage work across Ireland, the UK and Europe.</p>
+      <a class="contact-email" href="mailto:MDL@esperti.uk">MDL@esperti.uk ↗</a>
     </div>
-    <div class="contact-grid reveal">
-      <div class="contact-col"><span class="meta">Company</span><strong>ESPERTI™ Construct (Europe) Ltd</strong><span>Dublin, Ireland · Reg. No. 814028</span></div>
-      <div class="contact-col"><span class="meta">Direct</span><strong>Mark De Luca</strong><span>Director</span></div>
-      <div class="contact-col contact-cta-col">
-        <a class="contact-button" href="tel:+447391219074">Call +44 7391 219074 ↗</a>
-        <a class="contact-button ghost" href="mailto:MDL@esperti.uk">MDL@esperti.uk ↗</a>
+    <form class="contact-form reveal" id="contactForm">
+      <div class="form-row">
+        <label><span>Name</span><input name="name" type="text" autocomplete="name" required></label>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
       </div>
-    </div>
+      <label><span>Company</span><input name="company" type="text" autocomplete="organization"></label>
+      <label><span>Project</span><textarea name="message" rows="4" placeholder="Tell us briefly about the project and what you need."></textarea></label>
+      <button class="contact-button form-submit" type="submit">Send enquiry ↗</button>
+      <p class="form-note">Your enquiry will open in your email client.</p>
+    </form>
   </div>
 </section>
 
@@ -999,7 +1061,6 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
     <div class="footer-col">
       <span class="footer-heading">Connect</span>
       <nav class="footer-nav">
-        <a href="tel:+447391219074">+44 7391 219074</a>
         <a href="mailto:MDL@esperti.uk">MDL@esperti.uk</a>
         <a href="https://www.linkedin.com/company/esperticonstruct/" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://www.instagram.com/esperti.uk/" target="_blank" rel="noopener">Instagram ↗</a>
@@ -1089,7 +1150,28 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   }
   tabs.forEach(t=>t.addEventListener('click',()=>applyDiscipline(t)));
   const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target)}}),{threshold:.01,rootMargin:'0px 0px -10% 0px'});
-  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+  document.querySelectorAll('.reveal:not(.in), .mask-reveal:not(.in)').forEach(el=>io.observe(el));
+
+  const discCollage=document.querySelector('.disc-collage');
+  const discMobileMeta=document.getElementById('discMobileMeta');
+  const discMobileDots=[...document.querySelectorAll('.disc-mobile-dots i')];
+  function updateMobileDiscSlide(){
+    if(!discCollage || window.innerWidth>700) return;
+    const index=Math.max(0,Math.min(3,Math.round(discCollage.scrollLeft/Math.max(1,discCollage.clientWidth))));
+    const active=tabs.find(t=>t.classList.contains('active'));
+    const nameText=active ? active.dataset.name.toUpperCase() : 'CONSTRUCTION';
+    if(discMobileMeta) discMobileMeta.textContent=String(index+1).padStart(2,'0')+' / '+nameText;
+    discMobileDots.forEach((d,i)=>d.classList.toggle('active',i===index));
+  }
+  if(discCollage){discCollage.addEventListener('scroll',updateMobileDiscSlide,{passive:true});window.addEventListener('resize',updateMobileDiscSlide);}
+  const contactForm=document.getElementById('contactForm');
+  if(contactForm){contactForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    const data=new FormData(contactForm);
+    const subject='ESPERTI project enquiry — '+(data.get('company')||data.get('name')||'New enquiry');
+    const body=['Name: '+(data.get('name')||''),'Email: '+(data.get('email')||''),'Company: '+(data.get('company')||''),'','Project / enquiry:',data.get('message')||''].join('\n');
+    window.location.href='mailto:MDL@esperti.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  });}
 
   // Count-up numbers
   if(!reduceMotion){
