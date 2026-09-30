@@ -46,7 +46,7 @@ img{display:block;width:100%;height:auto}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 button,.nav,.nav-cta,.mobile-menu,.spectrum-item,.disc-tab,.project-main,.project-side img,.sector,.social-card,.scroll-box,.founder-card,.founder-photo,.field-main,.field-side-card,.contact-link,.intro-value{border-radius:0!important}
 ::selection{background:var(--ember);color:#fff}
-body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px;animation:grainShift 8s steps(8) infinite}
+body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
 @keyframes grainShift{
   0%{transform:translate(0,0)}
   12.5%{transform:translate(-9px,4px)}
@@ -858,15 +858,21 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 .project-card-construction{border-top-color:var(--steel)!important}
 .project-card-media{position:relative!important;overflow:hidden!important;background:#d9d7cf!important}
 .project-card-media>img{height:100%!important;object-fit:cover!important;transition:transform .8s var(--ease),filter .45s ease!important}
-.project-card:hover .project-card-media>img{transform:scale(1.035)!important;filter:saturate(1.03)!important}
+.project-card-media>.project-card-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;transition:opacity .42s ease,transform .8s var(--ease),filter .42s ease!important}
+.project-card-media>.project-card-image.is-primary{opacity:1!important}
+.project-card-media>.project-card-image.is-hover{opacity:0!important}
+.project-card:hover .project-card-media>.project-card-image.is-hover{opacity:1!important;transform:scale(1.025)!important;filter:saturate(1.02)!important}
+.project-card:hover .project-card-media>.project-card-image.is-primary{opacity:0!important;transform:scale(1.02)!important}
+.project-card:hover .project-card-media>img:not(.project-card-image){transform:scale(1.035)!important;filter:saturate(1.03)!important}
 .project-card-discipline{position:absolute;right:12px;bottom:12px;padding:8px 9px;background:rgba(10,10,8,.68);color:#fff;font-family:var(--mono);font-size:7px;letter-spacing:.13em;backdrop-filter:blur(10px)}
 .project-card-fitout .project-card-discipline{border-left:2px solid var(--ember)}
 .project-card-construction .project-card-discipline{border-left:2px solid var(--steel)}
-.project-mini-collage{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr 1fr!important;width:100%;height:100%;gap:3px!important}
-.project-mini-collage img{width:100%!important;height:100%!important;object-fit:cover!important;filter:saturate(.78)!important}
+.project-mini-collage{display:none!important}.project-mini-collage img{display:none!important}
 .project-card-body{background:rgba(255,255,255,.2)!important}
 .project-card-body h3{font-size:clamp(27px,2.2vw,38px)!important}
 .project-card .project-meta{border-top:1px solid rgba(16,17,15,.12)!important}
+.project-card-media:has(.is-hover)::after{content:"VIEW FIELD IMAGE ↗";position:absolute;left:12px;bottom:12px;z-index:3;padding:8px 9px;background:rgba(10,10,8,.62);color:#fff;font-family:var(--mono);font-size:7px;letter-spacing:.12em;opacity:0;transform:translateY(5px);transition:opacity .35s ease,transform .35s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none}
+.project-card-media:has(.is-hover):hover::after{opacity:1;transform:translateY(0)}
 
 /* Sectors: dark photographic field with slow scroll and coloured glass tints */
 .sectors::before{transform:translate3d(0,var(--sector-shift,0px),0) scale(1.08)!important;transition:transform .08s linear;will-change:transform;opacity:.72!important}
@@ -1712,6 +1718,123 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   .contact-form-compact .contact-button{width:100%!important}
 }
 </style>
+
+<style>
+/* FINAL REFINEMENT: preserve the previous build, borrowing only the cleaner reference sections. */
+.discipline-reference{position:relative;background:#050605!important;color:#f6f3ec!important;overflow:hidden;isolation:isolate;padding-top:clamp(92px,10vw,150px)!important;padding-bottom:clamp(92px,10vw,150px)!important}
+.discipline-reference:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(5,6,5,.92),rgba(5,6,5,.94)),url("assets/disciplines-background.jpg");background-size:cover;background-position:center 38%;background-attachment:fixed;opacity:.26;z-index:-1;pointer-events:none}
+.discipline-ref-head{display:flex;justify-content:space-between;align-items:end;gap:40px;padding-bottom:clamp(38px,5vw,72px)}
+.discipline-ref-head .display{max-width:900px;font-size:clamp(48px,6vw,92px);line-height:.88}
+.discipline-ref-head .display em{font-style:normal;color:var(--ember)}
+.discipline-ref-head>p{max-width:360px;color:rgba(255,255,255,.56);font-size:13px;line-height:1.5;margin-bottom:4px}
+.discipline-ref-list{border-top:1px solid rgba(255,255,255,.2)}
+.discipline-ref-row{padding:26px 0 34px;border-bottom:1px solid rgba(255,255,255,.14)}
+.discipline-ref-row header{display:grid;grid-template-columns:54px minmax(0,1fr) auto;align-items:baseline;gap:16px;margin-bottom:22px}
+.discipline-ref-num{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--steel)}
+.discipline-ref-row h3{font-family:var(--disp);font-size:clamp(30px,3.5vw,54px);line-height:.9;font-weight:500;letter-spacing:-.055em;margin:0}
+.discipline-ref-row header p{font-size:11px;color:rgba(255,255,255,.45);margin:0}
+.discipline-ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-left:54px}
+.discipline-ref-grid figure{position:relative;aspect-ratio:4/5.1;overflow:hidden;background:#11120f;margin:0}
+.discipline-ref-grid figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.24));pointer-events:none;transition:opacity .35s ease}
+.discipline-ref-grid img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) brightness(.78);transition:transform .8s var(--ease),filter .5s ease}
+.discipline-ref-grid figure:first-child img{filter:saturate(.88) brightness(.91)}
+.discipline-ref-grid figure:hover img{transform:scale(1.045);filter:saturate(1) brightness(1)}
+.discipline-ref-grid figure:hover:after{opacity:.15}
+.discipline-ref-construction h3{color:#d6d7d3}.discipline-ref-refurbishment h3{color:var(--moss)}.discipline-ref-fitout h3{color:var(--ember)}.discipline-ref-heritage h3{color:var(--brass)}
+.discipline-ref-refurbishment .discipline-ref-num{color:var(--moss)}.discipline-ref-fitout .discipline-ref-num{color:var(--ember)}.discipline-ref-heritage .discipline-ref-num{color:var(--brass)}
+
+/* Founder section: midpoint between the previous build and the cleaner reference file. */
+.founder-middle{margin-top:clamp(42px,5vw,72px)}
+.founder-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.founder-card-clean{display:grid!important;grid-template-columns:minmax(190px,.72fr) minmax(0,1fr)!important;min-height:0!important;background:rgba(255,255,255,.22)!important;border:1px solid rgba(16,17,15,.12)!important;border-top:2px solid var(--steel)!important;box-shadow:none!important}
+.founder-card-clean:last-child{border-top-color:var(--ember)!important}
+.founder-card-clean .founder-photo{width:100%!important;height:100%!important;aspect-ratio:auto!important;border:0!important;border-right:1px solid var(--line)!important;min-height:360px}
+.founder-card-clean .founder-content{padding:22px 22px 24px!important;display:flex;flex-direction:column;justify-content:flex-start}
+.founder-card-clean .founder-content h3{font-size:clamp(28px,2.5vw,42px)!important;margin:24px 0 10px!important;letter-spacing:-.045em!important}
+.founder-card-clean .founder-content p{font-size:12px!important;line-height:1.55!important;color:#5e5e58!important;max-width:34ch}
+.founder-experience-wide{position:relative;min-height:360px;margin-top:16px;overflow:hidden;color:#fff;background:#111;isolation:isolate}
+.founder-experience-wide>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.8) contrast(1.05) brightness(.66)}
+.founder-experience-wide-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,8,7,.88),rgba(7,8,7,.34) 58%,rgba(7,8,7,.18));z-index:0}
+.founder-experience-wide-content{position:relative;z-index:1;min-height:360px;padding:34px 42px;display:flex;flex-direction:column;justify-content:space-between}
+.founder-experience-wide-kicker{font-family:var(--mono);font-size:8px;letter-spacing:.13em;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:10px}.founder-experience-wide-kicker span{width:7px;height:7px;background:var(--ember);display:block}
+.founder-experience-wide-main{display:flex;align-items:flex-end;gap:28px}.founder-experience-wide-stat{font-family:var(--disp);font-size:clamp(86px,11vw,150px);line-height:.7;letter-spacing:-.08em;font-weight:300}.founder-experience-wide-stat sup{font-size:.32em;vertical-align:top;color:var(--ember);margin-left:4px}
+.founder-experience-wide-title{font-family:var(--disp);font-size:clamp(20px,2vw,30px);line-height:1.05;letter-spacing:-.04em;max-width:390px;padding-bottom:3px}.founder-experience-wide-title span,.founder-experience-wide-title em{display:block}.founder-experience-wide-title em{font-style:normal;color:rgba(255,255,255,.66)}
+.founder-experience-wide-footer{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.54)}
+
+/* Project hover images: image-only interaction, no extra label. */
+.project-card-media:has(.is-hover)::after{display:none!important}
+.project-card-media:has(.is-hover):hover::after{display:none!important}
+.project-card-image.is-hover{opacity:0!important}
+.project-card:hover .project-card-image.is-hover{opacity:1!important}
+
+@media(max-width:900px){
+ .discipline-ref-head{display:block}.discipline-ref-head>p{margin-top:18px;max-width:520px}.discipline-ref-grid{margin-left:0}
+ .founder-pair{grid-template-columns:1fr}.founder-card-clean{grid-template-columns:.72fr 1fr!important}.founder-experience-wide,.founder-experience-wide-content{min-height:330px}
+}
+@media(max-width:650px){
+ .discipline-ref-head .display{font-size:14vw}.discipline-ref-row{padding:22px 0 26px}.discipline-ref-row header{grid-template-columns:32px 1fr;gap:10px;margin-bottom:16px}.discipline-ref-row header p{grid-column:2}.discipline-ref-row h3{font-size:32px}.discipline-ref-grid{grid-template-columns:1fr 1fr;gap:5px}.discipline-ref-grid figure{aspect-ratio:1/1}
+ .founder-card-clean{grid-template-columns:1fr!important}.founder-card-clean .founder-photo{min-height:300px;aspect-ratio:4/5!important;border-right:0!important;border-bottom:1px solid var(--line)!important}.founder-experience-wide{min-height:420px}.founder-experience-wide-content{min-height:420px;padding:24px 20px}.founder-experience-wide-main{display:block}.founder-experience-wide-stat{font-size:31vw;margin-bottom:18px}.founder-experience-wide-title{font-size:22px}.founder-experience-wide-footer{margin-top:30px}
+}
+</style>
+<style id="final-directed-pass">
+/* FINAL DIRECTED PASS: keep the existing site as master, borrow only the requested reference treatments. */
+.current-work{background:var(--paper)!important;padding-top:clamp(88px,9vw,132px)!important;padding-bottom:clamp(90px,10vw,150px)!important}
+.current-work-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:clamp(30px,4vw,54px)}
+.current-work-head .display{max-width:760px;font-size:clamp(50px,6.2vw,96px);line-height:.86;margin:0}
+.current-work-head .display em{font-style:normal;color:var(--ember)}
+.current-work-head>p{max-width:330px;color:var(--muted);font-size:12px;line-height:1.5;margin:0 0 4px}
+.current-work-feature{margin:0 0 clamp(28px,4vw,56px)!important}
+.current-work-feature .project-opening-media{height:auto!important;min-height:0!important;aspect-ratio:21/9!important}
+.current-work-feature .project-opening-image{inset:-2% 0!important;width:100%!important;height:104%!important;object-fit:cover!important;transform:scale(1.015)!important}
+.current-work-feature .project-opening-copy{left:clamp(24px,4vw,58px)!important;bottom:clamp(24px,4vw,52px)!important}
+.current-work-feature .project-opening-copy h3{font-size:clamp(42px,5vw,82px)!important;line-height:.86!important}
+.current-work-feature .project-opening-note{display:none!important}
+.current-work-grid{margin-top:0!important}
+.current-work-grid .project-card-media{aspect-ratio:1.28!important}
+.current-work-grid .project-card-body{padding:18px 16px 20px!important}
+.current-work-grid .project-card h3{font-size:clamp(28px,2.5vw,40px)!important}
+.current-work-grid .project-card-image.is-hover{opacity:0!important}
+.current-work-grid .project-card:hover .project-card-image.is-hover{opacity:1!important}
+.current-work-grid .project-card:hover .project-card-image.is-primary{opacity:0!important}
+
+/* Disciplines: same editorial reference structure, but use the supplied construction photograph as atmosphere. */
+.discipline-reference{background:#050605!important;isolation:isolate!important}
+.discipline-reference:before{background-image:linear-gradient(rgba(3,4,3,.91),rgba(3,4,3,.96)),url("assets/disciplines-background-new.jpg")!important;background-size:cover!important;background-position:center 42%!important;background-attachment:fixed!important;opacity:.34!important}
+.discipline-ref-grid img{filter:saturate(.62) brightness(.70)!important}
+.discipline-ref-grid figure:first-child img{filter:saturate(.76) brightness(.82)!important}
+.discipline-ref-grid figure:hover img{filter:saturate(.96) brightness(.94)!important}
+
+/* Founders: reproduce the supplied reference's horizontal portrait + text cards, then the wide experience panel. */
+.experience .founder-pair{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important}
+.experience .founder-card-clean{display:grid!important;grid-template-columns:minmax(0,43%) minmax(0,57%)!important;min-height:330px!important;height:auto!important;background:rgba(255,255,255,.28)!important;border:1px solid var(--line)!important;border-top:1px solid var(--line)!important;overflow:hidden!important}
+.experience .founder-card-clean:first-child{border-top-color:var(--line)!important}
+.experience .founder-card-clean:last-child{border-top-color:var(--line)!important}
+.experience .founder-card-clean .founder-photo{height:100%!important;min-height:330px!important;aspect-ratio:auto!important;border:0!important;border-right:1px solid var(--line)!important;background:#d9d7d0!important}
+.experience .founder-card-clean .founder-photo img{width:100%!important;height:100%!important;object-fit:cover!important;filter:grayscale(1) contrast(1.04)!important}
+.experience .founder-card-clean .founder-photo.mark img{object-position:center 24%!important}
+.experience .founder-card-clean .founder-photo.chris img{object-position:center 23%!important}
+.experience .founder-card-clean .founder-content{padding:24px 22px 22px!important;display:flex!important;flex-direction:column!important;min-width:0!important;min-height:330px!important}
+.experience .founder-card-clean .founder-topline{display:flex!important;justify-content:space-between!important;align-items:flex-start!important;gap:12px!important}
+.experience .founder-card-clean .founder-content h3{font-size:clamp(30px,3vw,48px)!important;line-height:.92!important;letter-spacing:-.055em!important;margin:18px 0 13px!important}
+.experience .founder-card-clean .founder-content p{font-size:12px!important;line-height:1.55!important;color:#66655f!important;max-width:100%!important}
+.experience .founder-card-clean .founder-tags{margin-top:auto!important;padding-top:20px!important;border-top:1px solid var(--line)!important;display:flex!important;gap:6px!important;flex-wrap:wrap!important}
+.experience .founder-card-clean .founder-tags span{padding:7px 8px!important;font-size:7px!important}
+.experience .founder-experience-wide{min-height:340px!important;margin-top:14px!important}
+.experience .founder-experience-wide-content{min-height:340px!important}
+
+@media(max-width:950px){
+  .current-work-head{display:block}.current-work-head>p{margin-top:18px;max-width:520px}
+  .experience .founder-pair{grid-template-columns:1fr!important}
+}
+@media(max-width:700px){
+  .current-work-feature .project-opening-media{aspect-ratio:4/3!important}
+  .current-work-feature .project-opening-note{display:none!important}
+  .experience .founder-card-clean{grid-template-columns:1fr!important;min-height:0!important}
+  .experience .founder-card-clean .founder-photo{height:300px!important;min-height:300px!important;border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .experience .founder-card-clean .founder-content{min-height:0!important}
+  .experience .founder-experience-wide,.experience .founder-experience-wide-content{min-height:420px!important}
+}
+</style>
 </head>
 <body>
 <header class="nav" id="nav">
@@ -1771,113 +1894,99 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   </div>
 </section>
 
-<section class="section disciplines disciplines-gallery" id="disciplines">
+<section class="section disciplines discipline-reference" id="disciplines">
+  <div class="disc-parallax" aria-hidden="true"><img src="assets/disciplines-parallax.webp" alt="" decoding="async" loading="lazy"></div>
   <div class="container">
-    <div class="discipline-gallery-head reveal">
-      <div>
-        <h2 class="display">Four disciplines.<br><em>One delivery model.</em></h2>
-      </div>
+    <div class="discipline-ref-head reveal">
+      <h2 class="display">Four disciplines. <em>One delivery model.</em></h2>
       <p>Construction, refurbishment, fit-out and heritage, shown through the work itself.</p>
     </div>
-
-    <div class="discipline-gallery-list">
-      <article class="discipline-gallery-row discipline-row-construction reveal">
-        <div class="discipline-gallery-meta">
-          <span class="discipline-gallery-number">01</span>
-          <div><h3>Construction</h3><p>Building with control.</p></div>
-          <span class="discipline-gallery-arrow">↗</span>
-        </div>
-        <div class="discipline-gallery-images">
-          <figure><img src="assets/discipline-construction-01.jpeg" alt="Construction project experience" loading="lazy"></figure>
-          <figure><img src="assets/discipline-construction-02.jpeg" alt="Construction project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-construction-03.jpeg" alt="Construction project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-construction-04.jpeg" alt="Construction project detail" loading="lazy"></figure>
+    <div class="discipline-ref-list">
+      <article class="discipline-ref-row discipline-ref-construction reveal">
+        <header><span class="discipline-ref-num">01</span><h3>Construction</h3><p>Building with control.</p></header>
+        <div class="discipline-ref-grid">
+          <figure><img src="assets/discipline-construction-01.jpeg" alt="Construction project experience" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-construction-02.jpeg" alt="Construction project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-construction-03.jpeg" alt="Construction project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-construction-04.jpeg" alt="Construction project detail" loading="lazy" decoding="async"></figure>
         </div>
       </article>
-
-      <article class="discipline-gallery-row discipline-row-refurbishment reveal">
-        <div class="discipline-gallery-meta">
-          <span class="discipline-gallery-number">02</span>
-          <div><h3>Refurbishment</h3><p>Transforming what exists.</p></div>
-          <span class="discipline-gallery-arrow">↗</span>
-        </div>
-        <div class="discipline-gallery-images">
-          <figure><img src="assets/discipline-refurbishment-01.jpeg" alt="Refurbishment project experience" loading="lazy"></figure>
-          <figure><img src="assets/discipline-refurbishment-02.jpeg" alt="Refurbishment project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-refurbishment-03.jpeg" alt="Refurbishment project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-refurbishment-04.jpeg" alt="Refurbishment project detail" loading="lazy"></figure>
+      <article class="discipline-ref-row discipline-ref-refurbishment reveal">
+        <header><span class="discipline-ref-num">02</span><h3>Refurbishment</h3><p>Transforming what exists.</p></header>
+        <div class="discipline-ref-grid">
+          <figure><img src="assets/discipline-refurbishment-01.jpeg" alt="Refurbishment project experience" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-refurbishment-02.jpeg" alt="Refurbishment project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-refurbishment-03.jpeg" alt="Refurbishment project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-refurbishment-04.jpeg" alt="Refurbishment project detail" loading="lazy" decoding="async"></figure>
         </div>
       </article>
-
-      <article class="discipline-gallery-row discipline-row-fitout reveal">
-        <div class="discipline-gallery-meta">
-          <span class="discipline-gallery-number">03</span>
-          <div><h3>Fit-out</h3><p>Detail that performs.</p></div>
-          <span class="discipline-gallery-arrow">↗</span>
-        </div>
-        <div class="discipline-gallery-images">
-          <figure><img src="assets/discipline-fitout-01.jpeg" alt="Fit-out project experience" loading="lazy"></figure>
-          <figure><img src="assets/discipline-fitout-02.jpeg" alt="Fit-out project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-fitout-03.jpeg" alt="Fit-out project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-fitout-04.jpeg" alt="Fit-out project detail" loading="lazy"></figure>
+      <article class="discipline-ref-row discipline-ref-fitout reveal">
+        <header><span class="discipline-ref-num">03</span><h3>Fit-out</h3><p>Detail that performs.</p></header>
+        <div class="discipline-ref-grid">
+          <figure><img src="assets/discipline-fitout-01.jpeg" alt="Fit-out project experience" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-fitout-02.jpeg" alt="Fit-out project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-fitout-03.jpeg" alt="Fit-out project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-fitout-04.jpeg" alt="Fit-out project detail" loading="lazy" decoding="async"></figure>
         </div>
       </article>
-
-      <article class="discipline-gallery-row discipline-row-heritage reveal">
-        <div class="discipline-gallery-meta">
-          <span class="discipline-gallery-number">04</span>
-          <div><h3>Heritage</h3><p>Respecting what came before.</p></div>
-          <span class="discipline-gallery-arrow">↗</span>
-        </div>
-        <div class="discipline-gallery-images">
-          <figure><img src="assets/discipline-heritage-01.jpeg" alt="Heritage project experience" loading="lazy"></figure>
-          <figure><img src="assets/discipline-heritage-02.jpeg" alt="Heritage project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-heritage-03.jpeg" alt="Heritage project detail" loading="lazy"></figure>
-          <figure><img src="assets/discipline-heritage-04.jpeg" alt="Heritage project detail" loading="lazy"></figure>
+      <article class="discipline-ref-row discipline-ref-heritage reveal">
+        <header><span class="discipline-ref-num">04</span><h3>Heritage</h3><p>Respecting what came before.</p></header>
+        <div class="discipline-ref-grid">
+          <figure><img src="assets/discipline-heritage-01.jpeg" alt="Heritage project experience" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-heritage-02.jpeg" alt="Heritage project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-heritage-03.jpeg" alt="Heritage project detail" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/discipline-heritage-04.jpeg" alt="Heritage project detail" loading="lazy" decoding="async"></figure>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section project" id="projects">
+<section class="section project current-work" id="projects">
   <div class="container">
-    <div class="project-intro-line reveal project-intro-minimal">
-      <div class="project-intro-copy">
-        <p>Selected current work, organised by discipline.</p>
+    <div class="current-work-head reveal">
+      <div>
+        <div class="kicker terra">04 / PROJECTS</div>
+        <h2 class="display">Selected <em>current work.</em></h2>
       </div>
+      <p>Current projects across construction, refurbishment and fit-out.</p>
     </div>
   </div>
 
-  <article class="project-opening reveal">
+  <article class="project-opening current-work-feature reveal">
     <div class="project-opening-media">
-      <img class="project-opening-image" src="assets/wingstop-transformation-concept-new.webp" alt="Wingstop construction-to-opening transformation concept" loading="lazy">
+      <img class="project-opening-image" src="assets/wingstop-transformation-concept-new.webp" alt="Wingstop construction-to-opening transformation concept" loading="lazy" decoding="async">
       <div class="project-opening-copy">
         <h3><div class="po-line">Transformation</div><div class="po-line"><em>in progress.</em></div></h3>
         <div class="po-progress" aria-hidden="true"><i></i></div>
       </div>
-      <div class="project-opening-note">Conceptual visual treatment</div>
     </div>
   </article>
 
   <div class="container">
-    <div class="project-grid-3 reveal stagger">
+    <div class="project-grid-3 reveal stagger current-work-grid">
       <article class="project-card project-card-fitout">
-        <div class="project-card-media project-rushmere-media"><img src="assets/project-rushmere-new.jpeg" alt="Rushmere project existing condition" loading="lazy"><span class="project-card-index">01 / 03</span><span class="project-card-discipline">FIT-OUT</span></div>
+        <div class="project-card-media project-rushmere-media">
+          <img class="project-card-image is-primary" src="assets/project-rushmere-new.jpeg" alt="Rushmere Wingstop project exterior" loading="lazy" decoding="async">
+          <img class="project-card-image is-hover" src="assets/rushmere-hover.jpg" alt="Rushmere project interior under construction" loading="lazy" decoding="async">
+          <span class="project-card-index">01 / 03</span><span class="project-card-discipline">FIT-OUT</span>
+        </div>
         <div class="project-card-body"><div class="project-client project-discipline fitout">FIT-OUT · F&amp;B</div><h3>Rushmere</h3><div class="project-location">Northern Ireland</div><div class="project-meta"><span>Current project</span><span>Field imagery</span></div></div>
       </article>
+
       <article class="project-card project-card-fitout">
-        <div class="project-card-media"><img src="assets/project-bristol-new.jpeg" alt="Bristol Wingstop project detail" loading="lazy"><span class="project-card-index">02 / 03</span><span class="project-card-discipline">FIT-OUT</span></div>
+        <div class="project-card-media">
+          <img class="project-card-image is-primary" src="assets/project-bristol-new.jpeg" alt="Bristol Wingstop project detail" loading="lazy" decoding="async">
+          <img class="project-card-image is-hover" src="assets/bristol-hover-new.jpeg" alt="Bristol Wingstop completed interior" loading="lazy" decoding="async">
+          <span class="project-card-index">02 / 03</span><span class="project-card-discipline">FIT-OUT</span>
+        </div>
         <div class="project-card-body"><div class="project-client project-discipline fitout">FIT-OUT · F&amp;B</div><h3>Bristol</h3><div class="project-location">Bristol · England</div><div class="project-meta"><span>Current project</span><span>Field imagery</span></div></div>
       </article>
+
       <article class="project-card project-card-construction">
         <div class="project-card-media project-colchester-media">
-          <div class="project-mini-collage">
-            <img src="assets/colchester-01.webp" alt="Colchester construction site" loading="lazy">
-            <img src="assets/colchester-02.webp" alt="Colchester construction detail" loading="lazy">
-            <img src="assets/colchester-03.webp" alt="Colchester construction detail" loading="lazy">
-            <img src="assets/colchester-04.webp" alt="Colchester construction detail" loading="lazy">
-          </div>
+          <img class="project-card-image is-primary" src="assets/colchester-facade.png" alt="Colchester project facade" loading="lazy" decoding="async">
+          <img class="project-card-image is-hover" src="assets/colchester-interior.jpeg" alt="Colchester project interior under construction" loading="lazy" decoding="async">
           <span class="project-card-index">03 / 03</span><span class="project-card-discipline">CONSTRUCTION</span>
         </div>
         <div class="project-card-body"><div class="project-client project-discipline construction">CONSTRUCTION · F&amp;B</div><h3>Colchester</h3><div class="project-location">England</div><div class="project-meta"><span>Current project</span><span>Field imagery</span></div></div>
@@ -1910,38 +2019,37 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       </div>
     </div>
 
-    <div class="founder-grid reveal stagger">
-      <article class="founder-card">
-        <div class="founder-photo mark"><img src="assets/mark-profile-user.webp" alt="Mark De Luca" loading="lazy"></div>
-        <div class="founder-content">
-          <div class="founder-topline"><div class="meta">01 / DIRECTOR · COMMERCIAL &amp; DELIVERY</div><a class="founder-linkedin" href="https://www.linkedin.com/in/delucamw" target="_blank" rel="noopener noreferrer" aria-label="Mark De Luca on LinkedIn">LinkedIn ↗</a></div>
-          <h3>Mark De Luca</h3>
-          <p>Construction professional with commercial and project-management experience spanning quantity surveying, procurement, cost management, construction consultancy and delivery across food &amp; beverage, hotel and retail environments.</p>
-          <div class="founder-tags"><span>Commercial</span><span>Quantity Surveying</span><span>Project Delivery</span></div>
-        </div>
-      </article>
-      <article class="founder-card">
-        <div class="founder-photo chris"><img src="assets/chris-profile-user.webp" alt="Chris Small" loading="lazy"></div>
-        <div class="founder-content">
-          <div class="founder-topline"><div class="meta">02 / DIRECTOR · MCIOB · CONSTRUCTION</div><a class="founder-linkedin" href="https://www.linkedin.com/in/chris-small-mciob-twc-587a365b/" target="_blank" rel="noopener noreferrer" aria-label="Chris Small on LinkedIn">LinkedIn ↗</a></div>
-          <h3>Chris Small</h3>
-          <p>Construction professional and co-founder of ESPERTI, with experience progressing from senior site management to associate director. His background includes new build, refurbishment and fit-out delivery across retail, hotel and hospitality environments.</p>
-          <div class="founder-tags"><span>Construction</span><span>Site Management</span><span>MCIOB</span></div>
-        </div>
-      </article>
-      <article class="founder-experience-card reveal">
-        <img src="assets/founder-experience-construction.jpeg" alt="Construction team working on site at sunset" loading="lazy">
-        <div class="founder-experience-card-overlay"></div>
-        <div class="founder-experience-card-content">
-          <div class="founder-experience-card-kicker"><span></span>THE EXPERIENCE BEHIND ESPERTI™</div>
-          <div class="founder-experience-card-main">
-            <div class="founder-experience-card-stat"><span class="countup" data-target="50">0</span><sup>+</sup></div>
-            <div class="founder-experience-card-title"><span>combined years</span><em>of construction, commercial &amp; project delivery.</em></div>
+    <div class="founder-middle reveal">
+      <div class="founder-pair">
+        <article class="founder-card founder-card-clean">
+          <div class="founder-photo mark"><img src="assets/mark-profile-user.webp" alt="Mark De Luca" loading="lazy" decoding="async"></div>
+          <div class="founder-content">
+            <div class="founder-topline"><div class="meta">01 / DIRECTOR · COMMERCIAL &amp; DELIVERY</div><a class="founder-linkedin" href="https://www.linkedin.com/in/delucamw" target="_blank" rel="noopener noreferrer" aria-label="Mark De Luca on LinkedIn">LinkedIn ↗</a></div>
+            <h3>Mark De Luca</h3>
+            <p>Construction professional with commercial and project-management experience spanning quantity surveying, procurement, cost management, construction consultancy and delivery across food &amp; beverage, hotel and retail environments.</p>
+            <div class="founder-tags"><span>Commercial</span><span>Quantity Surveying</span><span>Project Delivery</span></div>
           </div>
-          <div class="founder-experience-card-footer">
-            <div class="founder-experience-card-note">Construction · Commercial · Project Delivery</div>
-            <span class="founder-experience-card-index">03 / EXPERIENCE</span>
+        </article>
+        <article class="founder-card founder-card-clean">
+          <div class="founder-photo chris"><img src="assets/chris-profile-user.webp" alt="Chris Small" loading="lazy" decoding="async"></div>
+          <div class="founder-content">
+            <div class="founder-topline"><div class="meta">02 / DIRECTOR · MCIOB · CONSTRUCTION</div><a class="founder-linkedin" href="https://www.linkedin.com/in/chris-small-mciob-twc-587a365b/" target="_blank" rel="noopener noreferrer" aria-label="Chris Small on LinkedIn">LinkedIn ↗</a></div>
+            <h3>Chris Small</h3>
+            <p>Construction professional and co-founder of ESPERTI, with experience progressing from senior site management to associate director. His background includes new build, refurbishment and fit-out delivery across retail, hotel and hospitality environments.</p>
+            <div class="founder-tags"><span>Construction</span><span>Site Management</span><span>MCIOB</span></div>
           </div>
+        </article>
+      </div>
+      <article class="founder-experience-wide">
+        <img src="assets/founder-experience-construction.jpeg" alt="Construction team working on site at sunset" loading="lazy" decoding="async">
+        <div class="founder-experience-wide-overlay"></div>
+        <div class="founder-experience-wide-content">
+          <div class="founder-experience-wide-kicker"><span></span>THE EXPERIENCE BEHIND ESPERTI™</div>
+          <div class="founder-experience-wide-main">
+            <div class="founder-experience-wide-stat"><span class="countup" data-target="50">0</span><sup>+</sup></div>
+            <div class="founder-experience-wide-title"><span>combined years</span><em>of construction, commercial &amp; project delivery.</em></div>
+          </div>
+          <div class="founder-experience-wide-footer">Construction · Commercial · Project Delivery</div>
         </div>
       </article>
     </div>
@@ -1960,8 +2068,52 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   </div>
 </section>
 
-<section class="section process" id="approach">
-  <div class="container"><div class="process-grid reveal"><div class="process-top"><div class="process-copy"><div class="kicker light">06 / APPROACH</div><h2 class="display">From brief to <em>handover.</em></h2><p class="body-copy">Every project starts with understanding the brief and ends with accountability for the result. ESPERTI combines collaboration with practical construction and commercial expertise.</p></div><div class="process-visual"><div class="process-visual-count">04</div><div class="process-visual-line"></div><div class="process-visual-label">Stages, brief<br>to handover</div></div></div><div class="steps reveal stagger"><div class="step"><div class="step-no">01</div><div><h3>Understand</h3><p>Brief, objectives, constraints and commercial requirements.</p></div></div><div class="step"><div class="step-no">02</div><div><h3>Plan</h3><p>Programme, coordination, procurement and delivery strategy.</p></div></div><div class="step"><div class="step-no">03</div><div><h3>Build</h3><p>Construction, refurbishment, fit-out and project management.</p></div></div><div class="step"><div class="step-no">04</div><div><h3>Deliver</h3><p>Quality, completion and accountable handover.</p></div></div></div></div></div>
+<section class="pr" id="approach">
+  <div class="container">
+    <div class="pr-head reveal">
+      <div>
+        <div class="kicker light">06 / APPROACH</div>
+        <h2 class="display">From brief to <em>handover.</em></h2>
+      </div>
+      <p>Every project starts with understanding the brief and ends with accountability for the result. ESPERTI combines collaboration with practical construction and commercial expertise.</p>
+    </div>
+
+    <ol class="pr-steps reveal stagger">
+      <li class="pr-step" style="--c:var(--steel)">
+        <div class="pr-node"><span class="pr-stage">Stage 01</span><i class="pr-dot"></i></div>
+        <span class="pr-num">01</span>
+        <h3>Understand</h3>
+        <p>Brief, objectives, constraints and commercial requirements.</p>
+        <ul><li>Brief</li><li>Objectives</li><li>Constraints</li><li>Commercial</li></ul>
+      </li>
+      <li class="pr-step" style="--c:var(--moss)">
+        <div class="pr-node"><span class="pr-stage">Stage 02</span><i class="pr-dot"></i></div>
+        <span class="pr-num">02</span>
+        <h3>Plan</h3>
+        <p>Programme, coordination, procurement and delivery strategy.</p>
+        <ul><li>Programme</li><li>Coordination</li><li>Procurement</li><li>Strategy</li></ul>
+      </li>
+      <li class="pr-step" style="--c:var(--ember)">
+        <div class="pr-node"><span class="pr-stage">Stage 03</span><i class="pr-dot"></i></div>
+        <span class="pr-num">03</span>
+        <h3>Build</h3>
+        <p>Construction, refurbishment, fit-out and project management.</p>
+        <ul><li>Construction</li><li>Refurbishment</li><li>Fit-out</li><li>Management</li></ul>
+      </li>
+      <li class="pr-step" style="--c:var(--brass)">
+        <div class="pr-node"><span class="pr-stage">Stage 04</span><i class="pr-dot"></i></div>
+        <span class="pr-num">04</span>
+        <h3>Deliver</h3>
+        <p>Quality, completion and accountable handover.</p>
+        <ul><li>Quality</li><li>Completion</li><li>Handover</li></ul>
+      </li>
+    </ol>
+
+    <div class="pr-foot reveal">
+      <span>Accountable from the first conversation to the final handover.</span>
+      <a href="#contact">Start a project <b aria-hidden="true">↗</b></a>
+    </div>
+  </div>
 </section>
 
 <section class="section social" id="field">
@@ -1972,7 +2124,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
     </div>
     <div class="social-grid reveal stagger">
       <a class="social-card social-photo-card" href="#projects">
-        <img src="assets/wingstop-bristol.webp" alt="ESPERTI project in the field" loading="lazy">
+        <img src="assets/wingstop-bristol.webp" alt="ESPERTI project in the field" loading="lazy" decoding="async">
         <span class="social-photo-overlay"></span>
         <div class="social-card-copy"><div class="tag">ESPERTI / IN THE FIELD</div><h3>See the work.</h3><span>View projects ↗</span></div>
       </a>
@@ -1991,7 +2143,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 <section class="contact-redesign" id="contact">
   <div class="contact-hero-panel">
       <div class="contact-visual" aria-hidden="true">
-        <img src="assets/contact-building.png" alt="" loading="lazy">
+        <img src="assets/contact-building.png" alt="" loading="lazy" decoding="async">
       </div>
     <div class="container contact-hero-inner">
       <div class="contact-hero-copy reveal">
@@ -2030,42 +2182,40 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   </div>
 </section>
 
-<footer class="footer" id="site-footer">
-  <div class="container footer-top">
-    <div class="footer-col footer-brand-col">
-      <div class="footer-brand-lockup"><img src="assets/esperti-mark.webp" alt="ESPERTI™"><div class="footer-brand">ESPERTI™</div></div>
-      <p class="footer-lead">Building confidence through experience, expertise and delivery.</p>
-      <p class="footer-tagline">Construction · Refurbishment · Fit-out · Heritage<br>UK · Ireland · International</p>
-    </div>
-    <div class="footer-col">
-      <span class="footer-heading">Site</span>
-      <nav class="footer-nav">
-        <a href="#about">About</a>
-        <a href="#disciplines">Disciplines</a>
-        <a href="#projects">Projects</a>
-        <a href="#sectors">Sectors</a>
-        <a href="#experience">Experience</a>
-        <a href="#approach">Approach</a>
-        <a href="#field">Field</a>
-        <a href="#contact">Contact</a>
+<footer class="ft" id="site-footer">
+  <div class="ft-bar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-lead-col">
+        <div class="ft-brand"><img src="assets/esperti-mark.webp" alt=""><span>ESPERTI™</span></div>
+        <p class="ft-lead">Building confidence through <em>experience, expertise</em> and delivery.</p>
+        <a class="ft-mail" href="mailto:MDL@esperti.uk"><span>MDL@esperti.uk</span><b aria-hidden="true">↗</b></a>
+      </div>
+      <nav class="ft-col" aria-label="Footer site links">
+        <span class="ft-h">Explore</span>
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#sectors">Sectors</a><a href="#experience">Experience</a><a href="#approach">Approach</a><a href="#field">Field</a><a href="#contact">Contact</a>
       </nav>
-    </div>
-    <div class="footer-col">
-      <span class="footer-heading">Connect</span>
-      <nav class="footer-nav">
-        <a href="mailto:MDL@esperti.uk">MDL@esperti.uk</a>
-        <a href="https://www.linkedin.com/company/esperticonstruct/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="https://www.instagram.com/esperti.uk/" target="_blank" rel="noopener">Instagram ↗</a>
+      <nav class="ft-col" aria-label="Footer disciplines">
+        <span class="ft-h">Disciplines</span>
+        <a href="#disciplines" style="--c:var(--steel)"><i></i>Construction</a>
+        <a href="#disciplines" style="--c:var(--moss)"><i></i>Refurbishment</a>
+        <a href="#disciplines" style="--c:var(--ember)"><i></i>Fit-out</a>
+        <a href="#disciplines" style="--c:var(--brass)"><i></i>Heritage</a>
       </nav>
+      <div class="ft-col">
+        <span class="ft-h">Connect</span>
+        <a href="https://www.linkedin.com/company/esperticonstruct/" target="_blank" rel="noopener">LinkedIn <b>↗</b></a>
+        <a href="https://www.instagram.com/esperti.uk/" target="_blank" rel="noopener">Instagram <b>↗</b></a>
+        <span class="ft-h ft-h2">Registered office</span>
+        <p>ESPERTI™ Construct (Europe) Ltd<br>Dublin, Ireland · No. 814028</p>
+      </div>
     </div>
-    <div class="footer-col footer-registered">
-      <span class="footer-heading">Registered office</span>
-      <p>ESPERTI™ Construct (Europe) Ltd<br>Dublin, Ireland · No. 814028</p>
+    <div class="ft-mark" aria-hidden="true">ESPERTI</div>
+    <div class="ft-bottom">
+      <span>© 2026 ESPERTI™ Construct (Europe) Ltd</span>
+      <span class="ft-geo">UK · Ireland · EU</span>
+      <a href="#top" class="ft-top-btn">Back to top <b aria-hidden="true">↑</b></a>
     </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© 2026 ESPERTI™ Construct (Europe) Ltd</span>
-    <span>Construction · Refurbishment · Fit-out · Heritage</span>
   </div>
 </footer>
 </main>
@@ -2160,45 +2310,6 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
     document.querySelectorAll('.countup').forEach(el=>{el.textContent=el.dataset.target||el.textContent;});
   }
 
-  // Parallax on the hero and combined-experience video bands
-  if(!reduceMotion){
-    const parallaxTargets=[
-      {video:document.querySelector('.hero-media video'), wrap:document.querySelector('.hero'), amp:26},
-      {video:document.querySelector('.founder-experience-video>video'), wrap:document.querySelector('.founder-experience-video'), amp:22}
-    ].filter(t=>t.video && t.wrap);
-    if(parallaxTargets.length){
-      function renderParallax(){
-        const vh=window.innerHeight;
-        parallaxTargets.forEach(function(t){
-          const rect=t.wrap.getBoundingClientRect();
-          if(rect.bottom<0 || rect.top>vh) return;
-          const center=rect.top+rect.height/2-vh/2;
-          const offset=Math.max(-t.amp,Math.min(t.amp,-(center/vh)*t.amp*2));
-          t.video.style.transform='translateY('+offset.toFixed(1)+'px) scale(1.14)';
-        });
-        requestAnimationFrame(renderParallax);
-      }
-      requestAnimationFrame(renderParallax);
-    }
-  }
-
-  // Slow photographic drift behind the sector cards.
-  if(!reduceMotion){
-    const sectors=document.getElementById('sectors');
-    if(sectors){
-      function sectorParallax(){
-        const r=sectors.getBoundingClientRect();
-        const vh=window.innerHeight;
-        if(r.bottom>0 && r.top<vh){
-          const progress=(vh-r.top)/(vh+r.height);
-          const shift=(progress-.5)*46;
-          sectors.style.setProperty('--sector-shift', shift.toFixed(1)+'px');
-        }
-        requestAnimationFrame(sectorParallax);
-      }
-      requestAnimationFrame(sectorParallax);
-    }
-  }
 })();
 </script>
 <style id="final-layout-pass-28sep">
@@ -2841,12 +2952,12 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 
 /* image: rises out of the top-right corner */
 .contact-redesign .contact-hero-panel>.contact-visual{
-  position:absolute!important;top:calc(-1 * var(--pop))!important;right:-2vw!important;bottom:0!important;left:auto!important;
+  position:absolute!important;top:auto!important;right:-2vw!important;bottom:0!important;left:auto!important;
   width:min(48vw,700px)!important;height:auto!important;z-index:3!important;pointer-events:none;overflow:visible!important;
 }
 .contact-redesign .contact-visual img{
-  width:100%!important;height:100%!important;object-fit:contain!important;object-position:right top!important;
-  transform:none!important;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))!important;
+  display:block!important;width:100%!important;height:auto!important;object-fit:contain!important;object-position:right bottom!important;
+  transform:scale(1.18)!important;transform-origin:right bottom!important;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))!important;
 }
 
 /* form: normal flow, compact, sits on the green (no white card) */
@@ -2882,7 +2993,8 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 @media(max-width:950px){
   .contact-redesign{--pop:70px}
   .contact-redesign .contact-hero-inner{padding-top:250px}
-  .contact-redesign .contact-hero-panel>.contact-visual{bottom:auto!important;height:310px!important;width:min(78vw,430px)!important;right:-6vw!important}
+  .contact-redesign .contact-hero-panel>.contact-visual{top:-70px!important;bottom:auto!important;height:310px!important;width:min(78vw,430px)!important;right:-6vw!important}
+  .contact-redesign .contact-visual img{height:100%!important;width:100%!important;object-fit:cover!important;object-position:right bottom!important;transform:scale(1.02)!important}
   .contact-redesign .contact-form-compact{width:100%!important}
 }
 @media(max-width:700px){
@@ -2894,5 +3006,178 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 }
 
 </style>
+<style id="perf-and-redesign-30sep">
+/* =====================================================================
+   PERFORMANCE — cheaper blur, cheaper video, no perpetual repaint work
+   ===================================================================== */
+.nav{-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
+.hero .hero-main .hero-disciplines-card{-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
+.sector{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04)),rgba(10,11,9,.5)!important}
+/* colour/brightness filter on a playing video is re-run every frame; a flat overlay gives the same darkening for free */
+.hero-media video{filter:none!important}
+.hero-media::after{content:"";position:absolute;inset:0;background:rgba(6,7,5,.4);pointer-events:none}
+.sectors::before{transition:none!important}
+
+/* =====================================================================
+   DISCIPLINES — pure black, faint scaffold photo, parallax
+   ===================================================================== */
+#disciplines.discipline-reference{background:#000!important;position:relative;overflow:hidden;isolation:isolate}
+#disciplines.discipline-reference::before{display:none!important}
+#disciplines .disc-parallax{position:absolute;left:0;right:0;top:-15%;height:130%;z-index:-2;pointer-events:none;will-change:transform;transform:translate3d(0,0,0)}
+#disciplines .disc-parallax img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.26}
+#disciplines.discipline-reference::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,#000 0,rgba(0,0,0,0) 13%,rgba(0,0,0,0) 87%,#000 100%),
+             radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 30%,rgba(0,0,0,.6) 100%)}
+
+/* =====================================================================
+   APPROACH — brief to handover
+   ===================================================================== */
+.pr{position:relative;background:#0b0c0a;color:#f6f3ec;padding:clamp(100px,10vw,160px) 0;overflow:hidden;isolation:isolate}
+.pr::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 75%)}
+.pr-head{display:flex;justify-content:space-between;align-items:flex-end;gap:6vw;margin-bottom:clamp(56px,7vw,110px)}
+.pr-head .display{font-size:clamp(48px,6vw,96px);max-width:820px}
+.pr-head .display em{font-style:normal;color:var(--ember)}
+.pr-head>p{max-width:400px;margin:0 0 6px;color:rgba(255,255,255,.58);font-size:14px;line-height:1.6}
+
+.pr-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.pr-steps::before,.pr-steps::after{content:"";position:absolute;left:0;right:0;top:41px}
+.pr-steps::before{height:1px;background:rgba(255,255,255,.16)}
+.pr-steps::after{height:2px;top:40.5px;background:linear-gradient(90deg,var(--steel),var(--moss),var(--ember),var(--brass));transform:scaleX(0);transform-origin:left;transition:transform 1.8s var(--ease) .2s}
+.pr-steps.in::after{transform:scaleX(1)}
+
+.pr-step{position:relative;padding:0 clamp(18px,2vw,32px) 44px 0;transition:opacity .55s ease,transform .6s var(--ease)}
+.pr-step:not(:first-child){padding-left:clamp(18px,2vw,32px)}
+.pr-step+.pr-step::before{content:"";position:absolute;left:0;top:82px;bottom:0;width:1px;background:linear-gradient(180deg,rgba(255,255,255,.16),transparent)}
+.pr-node{position:relative;height:82px}
+.pr-stage{position:absolute;left:0;top:0;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.pr-dot{position:absolute;left:0;top:35px;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 6px #0b0c0a}
+.pr-num{display:block;margin:30px 0 26px;font-family:var(--disp);font-size:clamp(64px,7vw,116px);line-height:.8;letter-spacing:-.07em;font-weight:500;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.28);transition:-webkit-text-stroke-color .35s ease}
+.pr-step:hover .pr-num{-webkit-text-stroke-color:var(--c)}
+.pr-step h3{margin:0 0 12px;font-family:var(--disp);font-size:clamp(26px,2.6vw,40px);line-height:1;letter-spacing:-.05em;font-weight:500;color:var(--c)}
+.pr-step p{max-width:290px;margin:0 0 24px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.55}
+.pr-step ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pr-step li{padding:7px 9px;border:1px solid rgba(255,255,255,.14);font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:border-color .3s ease,color .3s ease}
+.pr-step:hover li{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.85)}
+
+.pr-foot{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:clamp(36px,5vw,72px);padding-top:26px;border-top:1px solid rgba(255,255,255,.14);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.pr-foot a{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(255,255,255,.26);color:#fff;transition:background .3s ease,border-color .3s ease,color .3s ease}
+.pr-foot a b{font-weight:400;color:var(--ember);transition:color .3s ease,transform .3s var(--ease)}
+.pr-foot a:hover{background:var(--ember);border-color:var(--ember);color:#0b0c0a}
+.pr-foot a:hover b{color:#0b0c0a;transform:translate(3px,-3px)}
+
+@media(max-width:900px){
+  .pr-head{display:block}.pr-head>p{margin-top:22px}
+  .pr-steps{grid-template-columns:1fr;padding-left:30px}
+  .pr-steps::before,.pr-steps::after{left:5px;right:auto;top:6px;bottom:6px;width:1px;height:auto}
+  .pr-steps::after{width:2px;left:4.5px;background:linear-gradient(180deg,var(--steel),var(--moss),var(--ember),var(--brass));transform:scaleY(0);transform-origin:top}
+  .pr-steps.in::after{transform:scaleY(1)}
+  .pr-step,.pr-step:not(:first-child){padding:0 0 46px 0}
+  .pr-step+.pr-step::before{display:none}
+  .pr-node{position:static;height:auto}
+  .pr-dot{left:-30px;top:2px}
+  .pr-stage{position:static}
+  .pr-num{margin:14px 0;font-size:64px}
+}
+@media(max-width:700px){.pr-foot{flex-direction:column;align-items:flex-start}}
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.ft{position:relative;background:#070806;color:rgba(255,255,255,.6);overflow:hidden}
+.ft-bar{display:grid;grid-template-columns:repeat(4,1fr);height:3px}
+.ft-bar i:nth-child(1){background:var(--steel)}.ft-bar i:nth-child(2){background:var(--moss)}.ft-bar i:nth-child(3){background:var(--ember)}.ft-bar i:nth-child(4){background:var(--brass)}
+.ft-top{display:grid;grid-template-columns:1.6fr .8fr .9fr 1fr;gap:clamp(28px,5vw,80px);padding:clamp(64px,7vw,110px) 0 clamp(40px,4vw,64px)}
+.ft-brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-size:15px;font-weight:500;letter-spacing:.12em;color:#fff}
+.ft-brand img{width:30px;height:30px;object-fit:contain}
+.ft-lead{max-width:520px;margin:28px 0 34px;font-family:var(--disp);font-size:clamp(26px,2.9vw,44px);font-weight:500;line-height:1;letter-spacing:-.05em;color:#f1eee6}
+.ft-lead em{font-style:normal;color:var(--ember)}
+.ft-mail{display:inline-flex;align-items:center;gap:14px;padding:14px 18px 14px 20px;border:1px solid rgba(255,255,255,.22);font-family:var(--disp);font-size:clamp(16px,1.5vw,21px);color:#fff;transition:background .3s ease,border-color .3s ease,color .3s ease}
+.ft-mail b{font-weight:400;color:var(--ember);transition:color .3s ease,transform .3s var(--ease)}
+.ft-mail:hover{background:var(--ember);border-color:var(--ember);color:#0b0c0a}
+.ft-mail:hover b{color:#0b0c0a;transform:translate(3px,-3px)}
+.ft-col{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ft-h{display:block;margin-bottom:10px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.36)}
+.ft-h2{margin-top:26px}
+.ft-col a{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-size:15px;color:rgba(255,255,255,.72);transition:color .2s ease,transform .25s var(--ease)}
+.ft-col a:hover{color:#fff;transform:translateX(4px)}
+.ft-col a i{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.ft-col a b{font-weight:400;color:rgba(255,255,255,.4)}
+.ft-col p{margin:0;font-family:var(--mono);font-size:10px;line-height:1.8;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.44)}
+.ft-mark{margin:clamp(10px,2vw,30px) 0 0;padding-bottom:.06em;text-align:center;white-space:nowrap;user-select:none;font-family:var(--disp);font-weight:600;font-size:clamp(64px,19.5vw,320px);line-height:.78;letter-spacing:-.07em;
+  background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.02) 85%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0 26px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.ft-top-btn{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);transition:color .2s ease}
+.ft-top-btn b{font-weight:400;color:var(--ember)}
+.ft-top-btn:hover{color:var(--ember)}
+@media(max-width:1000px){.ft-top{grid-template-columns:1fr 1fr}.ft-lead-col{grid-column:1/-1}}
+@media(max-width:560px){.ft-top{grid-template-columns:1fr}.ft-bottom{flex-direction:column;align-items:flex-start;gap:10px}}
+
+@media(prefers-reduced-motion:reduce){.pr-steps::after{transition:none;transform:none}}
+
+</style>
+<script>
+/* One passive scroll handler for all parallax. Geometry is cached (no layout reads while scrolling),
+   and work only happens while the element is actually on screen. */
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sec=document.getElementById('disciplines');
+  var layer=sec&&sec.querySelector('.disc-parallax');
+  var sectors=document.getElementById('sectors');
+  var secTop=0,secH=0,secVis=false,stTop=0,stH=0,stVis=false,vh=window.innerHeight,ticking=false;
+
+  function measure(){
+    var y=window.pageYOffset;vh=window.innerHeight;
+    if(sec){var r=sec.getBoundingClientRect();secTop=r.top+y;secH=r.height}
+    if(sectors){var r2=sectors.getBoundingClientRect();stTop=r2.top+y;stH=r2.height}
+  }
+  function frame(){
+    ticking=false;
+    var y=window.pageYOffset,p;
+    if(layer&&secVis){
+      p=(y+vh-secTop)/(vh+secH);p=p<0?0:p>1?1:p;
+      layer.style.transform='translate3d(0,'+((p-.5)*secH*.26).toFixed(1)+'px,0)';
+    }
+    if(sectors&&stVis){
+      p=(y+vh-stTop)/(vh+stH);p=p<0?0:p>1?1:p;
+      sectors.style.setProperty('--sector-shift',((p-.5)*46).toFixed(1)+'px');
+    }
+  }
+  function request(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
+
+  if(!reduce&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.target===sec)secVis=e.isIntersecting;
+        if(e.target===sectors)stVis=e.isIntersecting;
+      });
+      measure();request();
+    },{rootMargin:'100px 0px'});
+    if(sec)io.observe(sec);
+    if(sectors)io.observe(sectors);
+    window.addEventListener('scroll',request,{passive:true});
+    window.addEventListener('resize',function(){measure();request()},{passive:true});
+    window.addEventListener('load',function(){measure();request()});
+    if('ResizeObserver' in window){
+      var rt=false;
+      new ResizeObserver(function(){if(rt)return;rt=true;requestAnimationFrame(function(){rt=false;measure();request()})}).observe(document.body);
+    }
+    measure();request();
+  }
+
+  /* Hero video: don't decode frames while it's off screen */
+  var v=document.querySelector('.hero-media video');
+  if(v&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause();
+      });
+    },{threshold:0}).observe(v);
+  }
+})();
+
+</script>
 </body>
 </html>
