@@ -797,12 +797,12 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 .intro-statement strong{font-weight:500;color:var(--ember)}
 
 /* Header: translucent white architectural glass */
-.nav{background:rgba(248,247,242,.68)!important;border:1px solid rgba(255,255,255,.62)!important;backdrop-filter:blur(22px) saturate(145%)!important;-webkit-backdrop-filter:blur(22px) saturate(145%)!important;box-shadow:0 10px 35px rgba(0,0,0,.08)!important}
+.nav{background:rgba(248,247,242,.68)!important;border:1px solid rgba(255,255,255,.62)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;box-shadow:0 10px 35px rgba(0,0,0,.08)!important}
 .navlinks a{font-weight:600!important;letter-spacing:.045em!important}
 .navlinks .nav-cta{font-weight:700!important;background:var(--ember)!important;color:#fff!important}
 
 /* Hero: darker film, smaller typography, better wide-screen balance */
-.hero-media video{filter:saturate(.78) contrast(1.05) brightness(.58)!important;transform:scale(1.08)!important}
+.hero-media video{filter:none!important;transform:scale(1.06)!important}
 .hero-overlay{background:linear-gradient(90deg,rgba(5,6,5,.78) 0%,rgba(5,6,5,.44) 47%,rgba(5,6,5,.18) 100%),linear-gradient(0deg,rgba(5,6,5,.78),rgba(5,6,5,.12) 58%)!important}
 .hero-grid{padding-top:112px!important;padding-bottom:44px!important}
 .hero-minimal{grid-template-columns:minmax(0,1fr) 252px!important;gap:clamp(32px,6vw,90px)!important;align-items:end!important}
@@ -871,7 +871,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 .project-card-body{background:rgba(255,255,255,.2)!important}
 .project-card-body h3{font-size:clamp(27px,2.2vw,38px)!important}
 .project-card .project-meta{border-top:1px solid rgba(16,17,15,.12)!important}
-.project-card-media:has(.is-hover)::after{content:"VIEW FIELD IMAGE ↗";position:absolute;left:12px;bottom:12px;z-index:3;padding:8px 9px;background:rgba(10,10,8,.62);color:#fff;font-family:var(--mono);font-size:7px;letter-spacing:.12em;opacity:0;transform:translateY(5px);transition:opacity .35s ease,transform .35s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none}
+.project-card-media:has(.is-hover)::after{content:"VIEW FIELD IMAGE ";position:absolute;left:12px;bottom:12px;z-index:3;padding:8px 9px;background:rgba(10,10,8,.62);color:#fff;font-family:var(--mono);font-size:7px;letter-spacing:.12em;opacity:0;transform:translateY(5px);transition:opacity .35s ease,transform .35s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none}
 .project-card-media:has(.is-hover):hover::after{opacity:1;transform:translateY(0)}
 
 /* Sectors: dark photographic field with slow scroll and coloured glass tints */
@@ -1197,7 +1197,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 @media(max-width:700px){.project-grid-3{grid-template-columns:1fr}.project-grid-3 .project-card:last-child{grid-column:auto}.sector-head{grid-template-columns:1fr}.experience-row{grid-template-columns:1fr!important;gap:8px!important}}
 
 /* 28 SEP 2026 · HEADER / HERO / PROJECT STORY PASS */
-.nav{background:rgba(255,255,255,.76)!important;color:var(--ink)!important;border:1px solid rgba(255,255,255,.72)!important;box-shadow:0 14px 38px rgba(12,13,11,.10)!important;backdrop-filter:blur(22px) saturate(145%)!important;-webkit-backdrop-filter:blur(22px) saturate(145%)!important}
+.nav{background:rgba(255,255,255,.76)!important;color:var(--ink)!important;border:1px solid rgba(255,255,255,.72)!important;box-shadow:0 14px 38px rgba(12,13,11,.10)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important}
 .nav.scrolled{background:rgba(255,255,255,.78)!important;color:var(--ink)!important;border-color:rgba(255,255,255,.78)!important;box-shadow:0 14px 38px rgba(12,13,11,.08)!important}
 .navlinks{font-family:var(--disp)!important;font-size:11px!important;font-weight:600!important;letter-spacing:.08em!important}
 .navlinks a{color:var(--ink)!important;opacity:.9!important;border-left-color:rgba(20,21,18,.10)!important;padding:0 20px!important}
@@ -1296,8 +1296,8 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   padding:4px 15px!important;
   border:1px solid rgba(255,255,255,.42)!important;
   background:rgba(255,255,255,.13)!important;
-  backdrop-filter:blur(24px) saturate(145%)!important;
-  -webkit-backdrop-filter:blur(24px) saturate(145%)!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
   box-shadow:0 20px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.18)!important;
   transform:translateY(-3vh)!important;
 }
@@ -1568,8 +1568,8 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   padding:8px 20px!important;
   background:rgba(255,255,255,.14)!important;
   border:1px solid rgba(255,255,255,.44)!important;
-  backdrop-filter:blur(24px) saturate(145%)!important;
-  -webkit-backdrop-filter:blur(24px) saturate(145%)!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
   box-shadow:0 24px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.16)!important;
 }
 .hero-discipline-row{min-height:60px!important;font-size:18px!important}
@@ -1835,10 +1835,559 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   .experience .founder-experience-wide,.experience .founder-experience-wide-content{min-height:420px!important}
 }
 </style>
+
+<style id="esperti-v5-technical-editorial">
+
+/* ============================================================
+   ESPERTI V5 · TECHNICAL EDITORIAL VISUAL PASS · 01 OCT 2026
+   Reference influence: micro-grid, technical borders, drawing
+   language, modular labels and atmospheric linework.
+   Content / interaction structure intentionally preserved.
+   ============================================================ */
+:root{
+  --v5-orange:#ef5a24;
+  --v5-orange-soft:rgba(239,90,36,.12);
+  --v5-grid-light:rgba(16,17,15,.075);
+  --v5-grid-dark:rgba(255,255,255,.075);
+  --v5-rule-light:rgba(16,17,15,.14);
+  --v5-rule-dark:rgba(255,255,255,.14);
+}
+
+/* Global technical atmosphere */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:997;
+  pointer-events:none;
+  opacity:.34;
+  background-image:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:64px 64px;
+  mix-blend-mode:multiply;
+}
+body::after{opacity:.022!important}
+
+/* Shared section geometry */
+.section,
+.project,
+.experience,
+.social,
+.intro-dark,
+.process,
+.sectors,
+.disciplines-gallery,
+.contact-redesign{
+  position:relative;
+}
+
+/* Tiny architectural registration marks */
+.section::after,
+.project::after,
+.experience::after,
+.social::after,
+.process::after,
+.sectors::after{
+  content:"";
+  position:absolute;
+  width:42px;
+  height:42px;
+  top:28px;
+  right:var(--pad);
+  pointer-events:none;
+  opacity:.42;
+  background:
+    linear-gradient(var(--v5-orange),var(--v5-orange)) 0 0/1px 14px no-repeat,
+    linear-gradient(var(--v5-orange),var(--v5-orange)) 0 0/14px 1px no-repeat,
+    linear-gradient(var(--v5-orange),var(--v5-orange)) 100% 100%/1px 14px no-repeat,
+    linear-gradient(var(--v5-orange),var(--v5-orange)) 100% 100%/14px 1px no-repeat;
+}
+
+/* HERO */
+.hero{isolation:isolate}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:64px 64px;
+  opacity:.16;
+  mix-blend-mode:screen;
+}
+.hero::after{
+  content:"ESPERTI / CONSTRUCT / 2026";
+  position:absolute;
+  z-index:3;
+  left:var(--pad);
+  top:104px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.48);
+  pointer-events:none;
+}
+.hero-grid{z-index:4!important}
+.hero-minimal h1{
+  text-wrap:balance;
+  text-shadow:0 12px 36px rgba(0,0,0,.18);
+}
+.hero-minimal-line{
+  position:relative;
+}
+.hero-minimal-line::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.4),rgba(255,255,255,.08));
+}
+.hero-disciplines-card{
+  border-left:2px solid var(--v5-orange)!important;
+  background:
+    linear-gradient(135deg,rgba(10,11,9,.68),rgba(10,11,9,.3)),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=")!important;
+  background-size:auto,64px 64px!important;
+}
+.hero-discipline-row{position:relative}
+.hero-discipline-row::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-1px;
+  width:28px;
+  height:1px;
+  background:var(--v5-orange);
+  opacity:.55;
+}
+
+/* ABOUT / INTRO: drawing plate */
+.intro-dark::before{
+  background:
+    radial-gradient(circle at 73% 30%,rgba(166,171,166,.13),transparent 28%),
+    linear-gradient(115deg,transparent 18%,rgba(176,151,103,.04) 50%,transparent 78%),
+    url("assets/esperti-line.webp") no-repeat center 53%/min(920px,64vw) auto,
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:auto,auto,min(920px,64vw) auto,64px 64px!important;
+  opacity:.19!important;
+}
+.intro-layout::before{
+  content:"01 / EXPERIENCE / DELIVERY";
+  position:absolute;
+  right:0;
+  top:0;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.15em;
+  color:rgba(16,17,15,.42);
+}
+.intro-values .intro-value{
+  position:relative;
+  background:rgba(255,255,255,.52);
+}
+
+/* DISCIPLINES: technical drawing frame */
+.disciplines-gallery,
+.disciplines{
+  background-color:var(--dark)!important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:120px 120px,120px 120px,64px 64px;
+}
+.discipline-gallery-head,
+.discipline-head{position:relative}
+.discipline-gallery-head::after,
+.discipline-head::after{
+  content:"CONSTRUCTION / REFURBISHMENT / FIT-OUT / HERITAGE";
+  display:block;
+  margin-top:14px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.28);
+}
+.discipline-stage{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035);
+}
+.disc-panel-info{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 55%),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:auto,64px 64px;
+}
+.disc-panel-media::before{
+  content:"ESPERTI / PROJECT IMAGERY";
+  position:absolute;
+  z-index:4;
+  top:18px;
+  right:18px;
+  padding:7px 9px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.14em;
+  color:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(8,8,7,.28);
+  backdrop-filter:blur(8px);
+}
+.disc-panel-media::after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(255,255,255,.10);
+  pointer-events:none;
+  z-index:3;
+}
+.disc-tab.active::before{color:var(--v5-orange)!important}
+
+/* PROJECT ARCHIVE */
+.project-heading-band{
+  border:1px solid rgba(255,255,255,.10)!important;
+  background-color:#12130f!important;
+}
+.project-heading-band::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:64px 64px;
+  opacity:.14;
+  pointer-events:none;
+}
+.project-heading-content{z-index:2!important}
+.project-archive-note{
+  position:relative;
+}
+.project-archive-note::before{
+  content:"ARCHIVE / SELECTED DELIVERY";
+  position:absolute;
+  left:0;
+  top:-14px;
+  transform:translateY(-100%);
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.16em;
+  color:var(--muted);
+}
+.project-card{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.4),rgba(255,255,255,.12)),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:auto,64px 64px;
+}
+.project-card-media::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  z-index:2;
+  border:1px solid rgba(255,255,255,.16);
+  pointer-events:none;
+}
+.project-card-index{
+  border-radius:0!important;
+  background:rgba(8,8,7,.42)!important;
+}
+
+/* SECTORS */
+.sectors::after{color:white}
+.sectors::before{
+  background:
+    linear-gradient(90deg,rgba(8,8,7,.9),rgba(8,8,7,.54) 55%,rgba(8,8,7,.78)),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="),
+    url("assets/hospitality.webp") center 42%/cover no-repeat!important;
+  background-size:auto,64px 64px,cover!important;
+}
+.sector{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.018)),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=")!important;
+  background-size:auto,64px 64px!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+}
+.sector::after{
+  content:"";
+  position:absolute;
+  right:15px;
+  top:15px;
+  font-family:var(--mono);
+  font-size:9px;
+  color:rgba(255,255,255,.34);
+}
+
+/* FOUNDERS / EXPERIENCE */
+.experience{
+  background:
+    linear-gradient(90deg,transparent 49.9%,rgba(16,17,15,.045) 50%,transparent 50.1%),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="),
+    var(--paper2)!important;
+  background-size:100% 100%,64px 64px,auto!important;
+}
+.founder-card{
+  position:relative;
+  background:rgba(255,255,255,.44)!important;
+}
+.founder-card::before{
+  content:"PROFILE / EXPERIENCE";
+  position:absolute;
+  z-index:5;
+  left:18px;
+  top:18px;
+  padding:6px 8px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.13em;
+  color:#fff;
+  background:rgba(10,10,8,.5);
+  border:1px solid rgba(255,255,255,.2);
+}
+.founder-photo{position:relative}
+.founder-photo::after{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(255,255,255,.24);
+  pointer-events:none;
+}
+.experience-grid{
+  position:relative;
+}
+.experience-grid::before{
+  content:"TRACK RECORD / DELIVERY";
+  position:absolute;
+  left:0;
+  top:-17px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.15em;
+  color:var(--muted);
+}
+
+/* APPROACH */
+.process{
+  background-color:var(--dark)!important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+  background-size:120px 120px,120px 120px,64px 64px;
+}
+.steps{position:relative}
+.step{position:relative;background:rgba(255,255,255,.012)}
+.step::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:24px;
+  height:1px;
+  background:var(--v5-orange);
+}
+
+/* FIELD / SOCIAL */
+.social{
+  background:
+    linear-gradient(90deg,transparent 49.9%,rgba(16,17,15,.04) 50%,transparent 50.1%),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="),
+    var(--paper)!important;
+  background-size:100% 100%,64px 64px,auto!important;
+}
+.social-card{
+  border:1px solid var(--v5-rule-light)!important;
+  background-image:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=")!important;
+  background-size:64px 64px!important;
+}
+.social-card.photo::after{background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.08) 65%)!important}
+
+/* CONTACT */
+.contact-hero-panel{
+  background:
+    linear-gradient(90deg,rgba(239,90,36,.98),rgba(239,90,36,.94)),
+    url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC4yNCIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzczM18xNDk1KSI+CjxsaW5lIHgxPSIwLjI1IiB5MT0iNyIgeDI9IjAuMjQ5OTk5IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjYzLjc1IiB5MT0iNyIgeDI9IjYzLjc1IiB5Mj0iNTYiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iNjMuNzUiIHgyPSI4IiB5Mj0iNjMuNzUiIHN0cm9rZT0iI0IzQjNBRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjU2IiB5MT0iMC4yNSIgeDI9IjgiIHkyPSIwLjI0OTk5NyIgc3Ryb2tlPSIjQjNCM0FGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cmVjdCB4PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB4PSI2MyIgeT0iNjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNCM0IzQUYiLz4KPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8cmVjdCB5PSI2MyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0IzQjNBRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzczM18xNDk1Ij4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=")!important;
+  background-size:auto,64px 64px!important;
+}
+.contact-hero-panel::before{
+  content:"08 / START A PROJECT";
+  position:absolute;
+  z-index:4;
+  right:var(--pad);
+  top:32px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.16em;
+  color:rgba(255,255,255,.52);
+}
+.contact-hero-panel::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(255,255,255,.15);
+  pointer-events:none;
+}
+.contact-form-compact{
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 20px 60px rgba(25,15,5,.12)!important;
+  background:rgba(245,241,233,.94)!important;
+}
+
+/* Technical micro-labels */
+.kicker{letter-spacing:.18em!important}
+.meta{letter-spacing:.15em!important}
+
+/* Hover behaviour: precise, not floaty */
+.project-card,.sector,.founder-card,.social-card,.step,.disc-tab{transition:transform .35s var(--ease),border-color .25s ease,background .25s ease}
+.project-card:hover{transform:translateY(-3px)}
+
+@media(max-width:700px){
+  body::before{opacity:.22}
+  .hero::after{top:86px;font-size:6px}
+  .section::after,.project::after,.experience::after,.social::after,.process::after,.sectors::after{right:20px;top:20px;transform:scale(.8);transform-origin:top right}
+  .disc-panel-media::after{inset:10px}
+  .project-card-media::before{inset:8px}
+  .contact-hero-panel::after{inset:10px}
+}
+
+</style>
+
+<style id="performance-final">
+/* FINAL PERFORMANCE PASS: preserve the editorial look without continuous repaint work. */
+.hero-media{background:#0b0c0a;isolation:isolate}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,5,.72),rgba(5,6,5,.30) 58%,rgba(5,6,5,.14)),linear-gradient(0deg,rgba(5,6,5,.70),rgba(5,6,5,.08) 62%);pointer-events:none;z-index:1}
+.hero-media video{position:relative;z-index:0;filter:none!important}
+.nav,.hero-disciplines-card{-webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important}
+.sector,.contact-form-new{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+@media(max-width:700px){.hero-media video{transform:scale(1.03)!important}}
+</style>
+
+<style id="mobile-polish-1oct">
+/* MOBILE POLISH · 1 OCT 2026 */
+html,body{max-width:100%;overflow-x:clip!important}
+body{width:100%;overscroll-behavior-x:none;touch-action:pan-y}
+img,video{-webkit-user-drag:none;user-select:none}
+.hero-media video{pointer-events:none}
+main,#top,.section,.hero,.experience,.social,.contact-redesign,.ft{max-width:100vw}
+
+/* Do not let touch/hold interactions reveal a horizontal canvas. */
+.hero,.hero-media,.hero-grid,.container{max-width:100%;}
+.hero-media{overflow:hidden}
+
+/* Hero discipline card: icons stay, accidental numbering stays out. */
+.hero-discipline .num,
+.hero-disciplines-card .num,
+.hero-disciplines-card [class*="num"]{display:none!important}
+.hero-disciplines-card{overflow:hidden}
+
+/* Founder section: remove small eyebrow/utility labels and keep hierarchy clean. */
+.people-head>.kicker,
+.people-head .kicker,
+.founder-topline .meta,
+.founder-experience-wide-kicker,
+.founder-experience-card-kicker,
+.experience-grid>.meta,
+.experience-grid::before{display:none!important}
+
+/* No typography sitting on the construction photograph. */
+.founder-experience-wide-content,
+.founder-experience-card-content{display:none!important}
+.founder-experience-wide,
+.founder-experience-card{position:relative;overflow:hidden}
+.founder-experience-wide img,
+.founder-experience-card>img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+
+/* Cleaner founder cards on phones. */
+@media(max-width:700px){
+  .people-head{display:block!important;margin-bottom:34px!important}
+  .people-head-main{display:block!important}
+  .people-head-main .display{max-width:100%!important;font-size:14vw!important;line-height:.88!important}
+  .people-head-main .body-copy{max-width:100%!important;margin-top:18px!important;font-size:12px!important;line-height:1.5!important}
+  .founder-grid{display:grid!important;grid-template-columns:1fr!important;gap:46px!important;margin-top:0!important}
+  .founder-card{display:block!important;width:100%!important;min-width:0!important}
+  .founder-card::before{display:none!important}
+  .founder-photo{width:100%!important;max-width:none!important;height:auto!important;aspect-ratio:4/5!important;margin:0 0 16px!important}
+  .founder-photo::after{display:none!important}
+  .founder-content{padding:0!important;min-height:0!important}
+  .founder-content h3{font-size:12vw!important;line-height:.9!important;margin:0 0 12px!important}
+  .founder-content p{max-width:100%!important;font-size:12px!important;line-height:1.55!important;margin:0!important}
+  .founder-tags{margin-top:16px!important;padding-top:14px!important}
+  .founder-experience-wide{margin-top:8px!important;aspect-ratio:16/10!important}
+  .founder-experience-card{aspect-ratio:16/10!important;margin-top:8px!important}
+  .experience-grid{margin-top:46px!important;padding-top:0!important}
+}
+
+/* Prevent iOS from turning the old arrow glyphs into colourful emoji if one survives in cached markup. */
+.hero-bottom-cta span[aria-hidden="true"],
+.project-card-media::after,
+.sector::after,
+.discipline-gallery-arrow{font-family:var(--mono)!important}
+
+/* Missing logo asset should never render the blue broken-image icon. */
+.brand img{font-size:0}
+.brand img:not([src]),.brand img[src=""]{display:none!important}
+</style>
+
+<style id="mark-name-orange">
+/* Mark De Luca name accent */
+.founder-pair .founder-card:first-child .founder-content h3{color:var(--ember)!important}
+</style>
+
+<style id="founder-social-refinement">
+/* Founder refinement: remove the image label, retain the original founder copy. */
+.founder-card::before{display:none!important;content:none!important}
+.founder-pair .founder-card .founder-content > p{display:block!important}
+.founder-pair .founder-card .founder-tags{display:flex!important}
+.founder-pair .founder-card .founder-content{padding-top:18px!important}
+.founder-pair .founder-card .founder-topline{justify-content:flex-end!important}
+.founder-pair .founder-card .founder-linkedin{margin-left:auto!important}
+.founder-pair .founder-card:first-child .founder-content h3{color:var(--ember)!important}
+.founder-pair .founder-card .founder-content h3{margin:12px 0 10px!important}
+
+/* Social / field: quieter ESPERTI palette instead of saturated network colours. */
+.social-network-card{
+  background:linear-gradient(145deg,#d7d6d0 0%,#c7c7c1 100%)!important;
+  color:var(--ink)!important;
+  border:1px solid rgba(16,17,15,.22)!important;
+  position:relative;
+  overflow:hidden;
+}
+.social-network-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;
+  background-image:
+    linear-gradient(rgba(16,17,15,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(16,17,15,.10) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(135deg,#000 0%,rgba(0,0,0,.65) 52%,transparent 100%);
+}
+.social-network-card::after{
+  content:"";position:absolute;width:240px;height:240px;right:-70px;bottom:-100px;border:1px solid rgba(16,17,15,.16);border-radius:50%;
+  box-shadow:0 0 0 34px rgba(16,17,15,.035),0 0 0 68px rgba(16,17,15,.025);
+  pointer-events:none;
+}
+.social-network-card > *{position:relative;z-index:2}
+.social-network-card:hover{transform:translateY(-4px)!important;background:linear-gradient(145deg,#deddd7,#cfcfc9)!important}
+.social-network-card .social-icon{width:42px;height:42px;margin-bottom:36px;color:var(--ink);opacity:.82}
+.social-network-card .tag{color:rgba(16,17,15,.56)!important}
+.social-network-card h3{color:var(--ink)!important}
+.social-network-card span:last-child{color:rgba(16,17,15,.68)!important}
+
+/* Give the field cards a more architectural, editorial composition. */
+.social-grid{gap:16px!important}
+.social-network-card{padding:26px!important;min-height:360px!important}
+.social-network-card h3{max-width:330px!important;font-size:clamp(30px,3vw,46px)!important;letter-spacing:-.055em!important}
+.social-network-card .tag{font-size:8px!important;letter-spacing:.16em!important}
+@media(max-width:700px){
+  .social-network-card{min-height:280px!important;padding:22px!important}
+  .social-network-card .social-icon{margin-bottom:28px}
+}
+</style>
+
 </head>
 <body>
 <header class="nav" id="nav">
-  <a href="#top" class="brand" aria-label="ESPERTI home"><img src="assets/esperti-mark.webp" alt=""><span class="brand-word">ESPERTI™</span></a>
+  <a href="#top" class="brand" aria-label="ESPERTI home"><img src="assets/esperti-mark.webp" alt="" onerror="this.style.display='none'"><span class="brand-word">ESPERTI™</span></a>
   <nav class="navlinks" aria-label="Primary navigation">
     <a href="#about">About</a><a href="#disciplines">Disciplines</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#field">Field</a><a href="#contact" class="nav-cta">Start a project</a>
   </nav>
@@ -1869,7 +2418,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
     <div class="hero-bottom reveal in">
       <p class="hero-bottom-desc">Construction, commercial and project delivery experience across complex environments.</p>
       <span class="hero-bottom-geo">IRELAND · UK · EU</span>
-      <a class="hero-bottom-cta" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
+      <a class="hero-bottom-cta" href="#contact">Start a project <span aria-hidden="true"></span></a>
     </div>
   </div>
 </section>
@@ -2024,7 +2573,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
         <article class="founder-card founder-card-clean">
           <div class="founder-photo mark"><img src="assets/mark-profile-user.webp" alt="Mark De Luca" loading="lazy" decoding="async"></div>
           <div class="founder-content">
-            <div class="founder-topline"><div class="meta">01 / DIRECTOR · COMMERCIAL &amp; DELIVERY</div><a class="founder-linkedin" href="https://www.linkedin.com/in/delucamw" target="_blank" rel="noopener noreferrer" aria-label="Mark De Luca on LinkedIn">LinkedIn ↗</a></div>
+            <div class="founder-topline"><div class="meta">01 / DIRECTOR · COMMERCIAL &amp; DELIVERY</div><a class="founder-linkedin" href="https://www.linkedin.com/in/delucamw" target="_blank" rel="noopener noreferrer" aria-label="Mark De Luca on LinkedIn">LinkedIn </a></div>
             <h3>Mark De Luca</h3>
             <p>Construction professional with commercial and project-management experience spanning quantity surveying, procurement, cost management, construction consultancy and delivery across food &amp; beverage, hotel and retail environments.</p>
             <div class="founder-tags"><span>Commercial</span><span>Quantity Surveying</span><span>Project Delivery</span></div>
@@ -2033,7 +2582,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
         <article class="founder-card founder-card-clean">
           <div class="founder-photo chris"><img src="assets/chris-profile-user.webp" alt="Chris Small" loading="lazy" decoding="async"></div>
           <div class="founder-content">
-            <div class="founder-topline"><div class="meta">02 / DIRECTOR · MCIOB · CONSTRUCTION</div><a class="founder-linkedin" href="https://www.linkedin.com/in/chris-small-mciob-twc-587a365b/" target="_blank" rel="noopener noreferrer" aria-label="Chris Small on LinkedIn">LinkedIn ↗</a></div>
+            <div class="founder-topline"><div class="meta">02 / DIRECTOR · MCIOB · CONSTRUCTION</div><a class="founder-linkedin" href="https://www.linkedin.com/in/chris-small-mciob-twc-587a365b/" target="_blank" rel="noopener noreferrer" aria-label="Chris Small on LinkedIn">LinkedIn </a></div>
             <h3>Chris Small</h3>
             <p>Construction professional and co-founder of ESPERTI, with experience progressing from senior site management to associate director. His background includes new build, refurbishment and fit-out delivery across retail, hotel and hospitality environments.</p>
             <div class="founder-tags"><span>Construction</span><span>Site Management</span><span>MCIOB</span></div>
@@ -2081,6 +2630,16 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
     <ol class="pr-steps reveal stagger">
       <li class="pr-step" style="--c:var(--steel)">
         <div class="pr-node"><span class="pr-stage">Stage 01</span><i class="pr-dot"></i></div>
+        <svg class="sk" viewBox="0 0 240 124" aria-hidden="true" focusable="false"><path style="--n:1" class="d" pathLength="1" d="M20 30 L190 20 L224 64 L204 106 L34 110 Z"/>
+<path style="--n:2" class="w" pathLength="1" d="M66 42 H170 V86 H66 Z"/>
+<path style="--n:3" pathLength="1" d="M118 42 V86 M66 64 H118"/>
+<path style="--n:4" class="t" pathLength="1" d="M66 100 H170 M66 96 V104 M170 96 V104"/>
+<path style="--n:5" pathLength="1" d="M212 40 V22 M212 22 L208.5 29 M212 22 L215.5 29"/>
+<path style="--n:6" class="e" pathLength="1" d="M17 27 H23 V33 H17 Z"/>
+<text x="118" y="95" text-anchor="middle">24,000</text>
+<text x="212" y="17" text-anchor="middle">N</text>
+<path style="--n:7" class="e c" pathLength="1" d="M20 27 V13"/>
+<g class="chip"><path style="--n:8" class="e c" pathLength="1" d="M14 1 H62 V13 H14 Z"/><text class="et" x="38" y="9.6" text-anchor="middle">BOUNDARY</text></g></svg>
         <span class="pr-num">01</span>
         <h3>Understand</h3>
         <p>Brief, objectives, constraints and commercial requirements.</p>
@@ -2088,6 +2647,17 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       </li>
       <li class="pr-step" style="--c:var(--moss)">
         <div class="pr-node"><span class="pr-stage">Stage 02</span><i class="pr-dot"></i></div>
+        <svg class="sk" viewBox="0 0 240 124" aria-hidden="true" focusable="false"><path style="--n:1" class="w" pathLength="1" d="M30 20 H210 V104 H30 Z"/>
+<path style="--n:2" class="w" pathLength="1" d="M100 20 V70 M100 70 H66"/>
+<path style="--n:3" class="w" pathLength="1" d="M150 104 V58 H210"/>
+<path style="--n:4" pathLength="1" d="M30 70 H54 M100 46 A22 22 0 0 1 78 70"/>
+<path style="--n:5" pathLength="1" d="M150 80 A20 20 0 0 0 130 104 M150 80 V104"/>
+<path style="--n:6" pathLength="1" d="M112 28 H138 V40 H112 Z M118 78 H134 V94 H118 Z"/>
+<path style="--n:7" pathLength="1" d="M168 70 h8 v8 h-8 Z M184 70 h8 v8 h-8 Z M168 86 h8 v8 h-8 Z M184 86 h8 v8 h-8 Z"/>
+<path style="--n:8" class="t" pathLength="1" d="M30 112 H210 M30 108 V116 M210 108 V116"/>
+<text x="120" y="121" text-anchor="middle">18,000</text>
+<path style="--n:9" class="e c" pathLength="1" d="M66 44 L82 62"/>
+<g class="chip"><path style="--n:10" class="e c" pathLength="1" d="M40 32 H84 V44 H40 Z"/><text class="et" x="62" y="40.6" text-anchor="middle">DOOR 900</text></g></svg>
         <span class="pr-num">02</span>
         <h3>Plan</h3>
         <p>Programme, coordination, procurement and delivery strategy.</p>
@@ -2095,6 +2665,17 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       </li>
       <li class="pr-step" style="--c:var(--ember)">
         <div class="pr-node"><span class="pr-stage">Stage 03</span><i class="pr-dot"></i></div>
+        <svg class="sk" viewBox="0 0 240 124" aria-hidden="true" focusable="false"><path style="--n:1" pathLength="1" d="M12 100 H228"/>
+<path style="--n:2" class="w" pathLength="1" d="M70 100 V30 M110 100 V30"/>
+<path style="--n:3" pathLength="1" d="M70 90 H110 M70 80 H110 M70 70 H110 M70 60 H110 M70 50 H110 M70 40 H110"/>
+<path style="--n:4" pathLength="1" d="M78 90 V80 M96 90 V80 M88 80 V70 M104 80 V70 M78 70 V60 M96 70 V60 M88 60 V50 M104 60 V50 M78 50 V40 M96 50 V40"/>
+<path style="--n:5" class="d" pathLength="1" d="M138 100 V30 M170 100 V30 M138 100 L170 76 M138 76 L170 52 M138 52 L170 28 M170 100 L138 76 M170 76 L138 52 M170 52 L138 28"/>
+<path style="--n:6" class="t" pathLength="1" d="M196 100 V50 M192 100 H200 M192 50 H200"/>
+<text x="204" y="46">+3.20</text>
+<path style="--n:7" class="e" pathLength="1" d="M110 50 H194"/>
+<path style="--n:8" class="e" pathLength="1" d="M194 48 H198 V52 H194 Z"/>
+<g class="chip"><path style="--n:9" class="e c" pathLength="1" d="M112 6 H152 V18 H112 Z"/><text class="et" x="132" y="14.6" text-anchor="middle">ON SITE</text></g>
+<path style="--n:10" class="e c" pathLength="1" d="M132 18 V50"/></svg>
         <span class="pr-num">03</span>
         <h3>Build</h3>
         <p>Construction, refurbishment, fit-out and project management.</p>
@@ -2102,6 +2683,16 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       </li>
       <li class="pr-step" style="--c:var(--brass)">
         <div class="pr-node"><span class="pr-stage">Stage 04</span><i class="pr-dot"></i></div>
+        <svg class="sk" viewBox="0 0 240 124" aria-hidden="true" focusable="false"><path style="--n:1" pathLength="1" d="M12 104 H228"/>
+<path style="--n:2" class="w" pathLength="1" d="M52 104 V50 L120 22 L188 50 V104"/>
+<path style="--n:3" pathLength="1" d="M44 50 H196"/>
+<path style="--n:4" pathLength="1" d="M68 66 H88 V88 H68 Z M152 66 H172 V88 H152 Z"/>
+<path style="--n:5" pathLength="1" d="M68 77 H88 M78 66 V88 M152 77 H172 M162 66 V88"/>
+<path style="--n:6" pathLength="1" d="M106 104 V74 H134 V104 M120 74 V104"/>
+<path style="--n:7" class="t" pathLength="1" d="M208 104 V50 M204 104 H212 M204 50 H212"/>
+<text x="214" y="101">+0.00</text>
+<path style="--n:8" class="e c" pathLength="1" d="M120 22 V14"/>
+<g class="chip"><path style="--n:9" class="e c" pathLength="1" d="M92 2 H148 V14 H92 Z"/><text class="et" x="120" y="10.6" text-anchor="middle">HANDOVER</text></g></svg>
         <span class="pr-num">04</span>
         <h3>Deliver</h3>
         <p>Quality, completion and accountable handover.</p>
@@ -2111,7 +2702,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 
     <div class="pr-foot reveal">
       <span>Accountable from the first conversation to the final handover.</span>
-      <a href="#contact">Start a project <b aria-hidden="true">↗</b></a>
+      <a href="#contact">Start a project <b aria-hidden="true"></b></a>
     </div>
   </div>
 </section>
@@ -2126,15 +2717,15 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       <a class="social-card social-photo-card" href="#projects">
         <img src="assets/wingstop-bristol.webp" alt="ESPERTI project in the field" loading="lazy" decoding="async">
         <span class="social-photo-overlay"></span>
-        <div class="social-card-copy"><div class="tag">ESPERTI / IN THE FIELD</div><h3>See the work.</h3><span>View projects ↗</span></div>
+        <div class="social-card-copy"><div class="tag">ESPERTI / IN THE FIELD</div><h3>See the work.</h3><span>View projects </span></div>
       </a>
       <a class="social-card social-network-card" href="https://www.linkedin.com/company/esperticonstruct/" target="_blank" rel="noopener">
         <div class="social-icon linkedin-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.1 8.4H1.3V21h3.8V8.4ZM3.2 2.1C2 2.1 1 3.1 1 4.3s1 2.2 2.2 2.2 2.2-1 2.2-2.2S4.4 2.1 3.2 2.1ZM22.9 13.8c0-3.8-2-5.6-4.8-5.6-2.2 0-3.1 1.2-3.6 2v-1.8h-3.8V21h3.8v-6.2c0-1.6.3-3.1 2.2-3.1 1.9 0 1.9 1.8 1.9 3.2V21h3.8l.1-7.2Z"/></svg></div>
-        <div><div class="tag">LINKEDIN</div><h3>Projects, people<br>&amp; progress.</h3><span>Follow ESPERTI ↗</span></div>
+        <div><div class="tag">LINKEDIN</div><h3>Projects, people<br>&amp; progress.</h3><span>Follow ESPERTI </span></div>
       </a>
       <a class="social-card social-network-card" href="https://www.instagram.com/esperti.uk/" target="_blank" rel="noopener">
         <div class="social-icon instagram-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg></div>
-        <div><div class="tag">INSTAGRAM</div><h3>Visuals, details<br>&amp; delivery.</h3><span>Follow @esperti.uk ↗</span></div>
+        <div><div class="tag">INSTAGRAM</div><h3>Visuals, details<br>&amp; delivery.</h3><span>Follow @esperti.uk </span></div>
       </a>
     </div>
   </div>
@@ -2152,7 +2743,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
         <p>Tell us what you are planning. From construction and refurbishment to fit-out and heritage, ESPERTI brings practical delivery and commercial experience to complex environments.</p>
         <div class="contact-hero-meta">
           <span>UK · IRELAND · INTERNATIONAL</span>
-          <a href="mailto:MDL@esperti.uk">MDL@esperti.uk ↗</a>
+          <a href="mailto:MDL@esperti.uk">MDL@esperti.uk </a>
         </div>
       </div>
       <form class="contact-form contact-form-new contact-form-compact reveal" id="contactForm">
@@ -2175,7 +2766,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
         <label><span>Message</span><textarea name="message" rows="4" placeholder="Tell us briefly about the project, scope and timeline."></textarea></label>
         <div class="form-submit-row">
           <p class="form-note">Your enquiry will open in your email client.</p>
-          <button class="contact-button form-submit" type="submit">Send enquiry ↗</button>
+          <button class="contact-button form-submit" type="submit">Send enquiry </button>
         </div>
       </form>
     </div>
@@ -2189,7 +2780,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       <div class="ft-lead-col">
         <div class="ft-brand"><img src="assets/esperti-mark.webp" alt=""><span>ESPERTI™</span></div>
         <p class="ft-lead">Building confidence through <em>experience, expertise</em> and delivery.</p>
-        <a class="ft-mail" href="mailto:MDL@esperti.uk"><span>MDL@esperti.uk</span><b aria-hidden="true">↗</b></a>
+        <a class="ft-mail" href="mailto:MDL@esperti.uk"><span>MDL@esperti.uk</span><b aria-hidden="true"></b></a>
       </div>
       <nav class="ft-col" aria-label="Footer site links">
         <span class="ft-h">Explore</span>
@@ -2204,8 +2795,8 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
       </nav>
       <div class="ft-col">
         <span class="ft-h">Connect</span>
-        <a href="https://www.linkedin.com/company/esperticonstruct/" target="_blank" rel="noopener">LinkedIn <b>↗</b></a>
-        <a href="https://www.instagram.com/esperti.uk/" target="_blank" rel="noopener">Instagram <b>↗</b></a>
+        <a href="https://www.linkedin.com/company/esperticonstruct/" target="_blank" rel="noopener">LinkedIn <b></b></a>
+        <a href="https://www.instagram.com/esperti.uk/" target="_blank" rel="noopener">Instagram <b></b></a>
         <span class="ft-h ft-h2">Registered office</span>
         <p>ESPERTI™ Construct (Europe) Ltd<br>Dublin, Ireland · No. 814028</p>
       </div>
@@ -2227,10 +2818,10 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
   var lenis = null;
   if(window.Lenis && !reduceMotion){
     lenis = new Lenis({
-      duration: 1.15,
+      duration: 0.72,
       easing: function(t){ return Math.min(1, 1 - Math.pow(2, -10 * t)); },
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.92,
       touchMultiplier: 1.1
     });
     function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
@@ -2567,7 +3158,7 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 .hero-minimal h1 .hero-expertise{color:#f5f2eb!important}
 .hero-minimal-line{max-width:760px!important;grid-template-columns:minmax(0,1fr) auto auto!important;margin-top:32px!important;gap:28px!important;align-items:end!important}
 .hero-minimal-line>span:first-child{max-width:400px!important;font-size:12px!important;line-height:1.5!important}
-.hero-disciplines-card{width:310px!important;max-width:none!important;justify-self:end!important;align-self:center!important;transform:none!important;padding:8px 20px!important;background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.44)!important;backdrop-filter:blur(24px) saturate(145%)!important;-webkit-backdrop-filter:blur(24px) saturate(145%)!important;box-shadow:0 24px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.16)!important}
+.hero-disciplines-card{width:310px!important;max-width:none!important;justify-self:end!important;align-self:center!important;transform:none!important;padding:8px 20px!important;background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.44)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;box-shadow:0 24px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.16)!important}
 .hero-discipline-row{min-height:60px!important;font-size:18px!important}
 @media(max-width:1100px){.hero-minimal{grid-template-columns:minmax(0,1fr) 270px!important;gap:42px!important}.hero-minimal-left{max-width:650px!important}.hero-minimal h1{font-size:clamp(46px,6.8vw,76px)!important}.hero-disciplines-card{width:270px!important}}
 @media(max-width:950px){.hero-minimal{position:relative!important;left:auto!important;right:auto!important;top:auto!important;transform:none!important;padding-top:15vh!important;grid-template-columns:minmax(0,1fr) 245px!important;gap:30px!important}.hero-minimal h1{font-size:clamp(44px,8.6vw,72px)!important}.hero-disciplines-card{width:245px!important}}
@@ -3118,6 +3709,63 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 @media(prefers-reduced-motion:reduce){.pr-steps::after{transition:none;transform:none}}
 
 </style>
+<style id="heron-inspired-1oct">
+/* =====================================================================
+   HERON-INSPIRED PASS · cursor, paper texture, blueprint sketches
+   Tune: --trail-life (trail length, ms). Paper strength = the last two numbers in each
+   feColorMatrix inside --paper-grain / --paper-mottle (the .2 / .12 multiplier; raise for more texture).
+   ===================================================================== */
+:root{
+  --paper-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .30  0 0 0 0 .24  0 0 0 0 .16  0 0 0 .2 -.08'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --paper-mottle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0045 .006' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .52  0 0 0 0 .44  0 0 0 0 .30  0 0 0 .12 -.04'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  --trail-life:520;          /* ms the cursor trail takes to fade (read by JS) */
+}
+
+/* ---- Paper texture: fine grain + soft warm mottling, paper sections only ---- */
+.intro-dark,.project,.social,.experience{
+  background-image:var(--paper-grain),var(--paper-mottle)!important;
+  background-size:300px 300px,900px 900px!important;
+  background-repeat:repeat!important;
+}
+
+/* ---- Cursor: small ember square + fading square trail ---- */
+.cur,.cur-trail{display:none}
+html.has-cur .cur,html.has-cur .cur-trail{display:block}
+@media (hover:hover) and (pointer:fine){
+  html.has-cur,html.has-cur *{cursor:none!important}
+  html.has-cur input,html.has-cur textarea,html.has-cur select{cursor:text!important}
+}
+.cur-trail{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:9998;pointer-events:none}
+.cur{position:fixed;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;z-index:9999;pointer-events:none;
+  background:var(--ember);opacity:0;will-change:transform;
+  transition:opacity .22s ease,width .22s var(--ease),height .22s var(--ease),margin .22s var(--ease),background-color .22s ease,box-shadow .22s ease}
+.cur.on{opacity:1}
+.cur.is-link{width:20px;height:20px;margin:-10px 0 0 -10px;background:transparent;box-shadow:inset 0 0 0 1px var(--ember)}
+.cur.is-down{width:5px;height:5px;margin:-2.5px 0 0 -2.5px}
+.cur.is-link.is-down{width:14px;height:14px;margin:-7px 0 0 -7px}
+.cur.is-text{opacity:0}
+
+/* ---- Blueprint sketches in the Approach steps ---- */
+.sk{display:block;width:100%;max-width:300px;height:auto;margin:22px 0 4px;color:#f6f3ec;overflow:visible}
+.sk path{fill:none;stroke:currentColor;stroke-width:.9;stroke-linecap:butt;stroke-linejoin:miter;opacity:.8;
+  stroke-dasharray:1 2;stroke-dashoffset:1;
+  transition:stroke-dashoffset 1.3s var(--ease) calc(.25s + var(--n,0) * .07s)}
+.sk path.w{stroke-width:2;opacity:1}
+.sk path.t{opacity:.45}
+.sk path.e{stroke:var(--ember);opacity:1}
+.sk path.d{stroke-dasharray:3 3;stroke-dashoffset:0;opacity:0;transition:opacity .9s ease .3s}
+.sk text{font-family:var(--mono);font-size:7px;letter-spacing:.08em;fill:currentColor;opacity:0;transition:opacity .6s ease 1.5s}
+.sk text.et{fill:var(--ember);font-size:6.2px}
+.pr-steps.in .sk path{stroke-dashoffset:0}
+.pr-steps.in .sk path.d{opacity:.5}
+.pr-steps.in .sk text{opacity:.6}
+.pr-steps.in .sk text.et{opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .sk path,.sk text{transition:none!important;stroke-dashoffset:0!important}
+  .sk path.d{opacity:.5!important}.sk text{opacity:.6!important}.sk text.et{opacity:1!important}
+}
+@media(max-width:900px){.sk{max-width:340px;margin-top:16px}}
+</style>
 <script>
 /* One passive scroll handler for all parallax. Geometry is cached (no layout reads while scrolling),
    and work only happens while the element is actually on screen. */
@@ -3179,5 +3827,149 @@ body::after{content:"";position:fixed;inset:-40px;z-index:998;pointer-events:non
 })();
 
 </script>
+
+
+
+
 </body>
+
+<style id="final-minimal-founder-process-pass">
+/* FINAL MINIMAL PASS · 2 OCT 2026 */
+
+/* HERO: remove the discipline index numbers at every breakpoint, not only mobile. */
+.hero .hero-main .hero-discipline-row::after,
+.hero-disciplines-card .hero-discipline-row::after,
+.hero-discipline .num,
+.hero-disciplines-card .num,
+.hero-disciplines-card [class*="num"]{
+  content:none!important;
+  display:none!important;
+}
+.hero .hero-main .hero-discipline-row{
+  grid-template-columns:22px 1fr!important;
+}
+
+/* FOUNDERS: the construction image should stay photographic. Keep the useful 50+ message,
+   remove the extra black/utility treatment and unnecessary labels. */
+.founder-experience-wide-kicker,
+.founder-experience-wide-footer,
+.founder-experience-card-kicker,
+.founder-experience-card-footer{
+  display:none!important;
+}
+.founder-experience-wide-content{
+  display:flex!important;
+  position:relative!important;
+  z-index:2!important;
+  min-height:360px!important;
+  padding:34px 42px!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  background:transparent!important;
+}
+.founder-experience-wide-overlay{
+  background:linear-gradient(90deg,rgba(7,8,7,.72),rgba(7,8,7,.20) 64%,rgba(7,8,7,.08))!important;
+}
+.founder-experience-wide-main{
+  display:flex!important;
+  align-items:flex-end!important;
+  gap:28px!important;
+}
+.founder-experience-wide-stat{
+  color:#fff!important;
+  font-family:var(--disp)!important;
+  font-size:clamp(86px,11vw,150px)!important;
+  line-height:.7!important;
+  letter-spacing:-.08em!important;
+  font-weight:300!important;
+}
+.founder-experience-wide-stat sup{
+  color:var(--ember)!important;
+}
+.founder-experience-wide-title{
+  color:#fff!important;
+  font-family:var(--disp)!important;
+  font-size:clamp(20px,2vw,30px)!important;
+  line-height:1.05!important;
+  letter-spacing:-.04em!important;
+  max-width:390px!important;
+  padding-bottom:3px!important;
+}
+.founder-experience-wide-title span,
+.founder-experience-wide-title em{display:block!important}
+.founder-experience-wide-title em{
+  font-style:normal!important;
+  color:rgba(255,255,255,.68)!important;
+}
+
+/* APPROACH: strip the oversized stage numbering and keep the process editorial/minimal. */
+.pr-stage,
+.pr-num{
+  display:none!important;
+}
+.pr-node{height:48px!important}
+.pr-dot{top:18px!important}
+.pr-step:not(:first-child){padding-left:clamp(18px,2vw,32px)!important}
+.pr-step{padding-bottom:36px!important}
+.pr-step+.pr-step::before{top:48px!important}
+/* Keep the architectural line drawings, but remove their measurement/annotation text. */
+.pr-step .sk text{display:none!important}
+
+@media(max-width:900px){
+  .pr-steps{padding-left:30px!important}
+  .pr-node{height:34px!important}
+  .pr-dot{top:2px!important}
+  .pr-step,.pr-step:not(:first-child){padding:0 0 40px!important}
+  .pr-step+.pr-step::before{display:none!important}
+}
+
+@media(max-width:700px){
+  .founder-experience-wide-content{
+    min-height:420px!important;
+    padding:24px 20px!important;
+    justify-content:flex-end!important;
+  }
+  .founder-experience-wide-main{display:block!important}
+  .founder-experience-wide-stat{
+    font-size:31vw!important;
+    line-height:.78!important;
+    margin:0 0 18px!important;
+  }
+  .founder-experience-wide-title{
+    font-size:22px!important;
+    max-width:310px!important;
+  }
+}
+</style>
+
 </html>
+<style id="mobile-top-video-final">
+/* MOBILE HERO TOP EXTENSION + CLEAN DISCIPLINE CARD · 1 OCT 2026 */
+@media(max-width:700px){
+  /* Pull the hero itself above the first viewport edge so the video reaches behind the fixed nav. */
+  .hero{
+    margin-top:-64px!important;
+    min-height:calc(100svh + 100px)!important;
+    overflow:hidden!important;
+  }
+  .hero-media{
+    inset:-64px 0 -42px!important;
+    overflow:hidden!important;
+  }
+  .hero-overlay{
+    inset:-64px 0 -42px!important;
+  }
+  /* Preserve the current headline/card vertical position after moving the hero upward. */
+  .hero-grid{padding-top:192px!important;}
+
+  /* No decorative counter numbers in the frosted disciplines card. */
+  .hero .hero-main .hero-discipline-row::after{content:none!important;display:none!important}
+  .hero-disciplines-card .hero-discipline-row::after{content:none!important;display:none!important}
+
+  /* Remove any tiny arrow/glyph treatment from mobile CTAs. */
+  .hero-bottom-cta span[aria-hidden="true"],
+  .hero-bottom-cta b[aria-hidden="true"],
+  .discipline-gallery-arrow,
+  .disc-tab-arrow{display:none!important}
+}
+</style>
