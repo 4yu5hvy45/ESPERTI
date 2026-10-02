@@ -3946,21 +3946,21 @@ html.has-cur .cur,html.has-cur .cur-trail{display:block}
 <style id="mobile-top-video-final">
 /* MOBILE HERO TOP EXTENSION + CLEAN DISCIPLINE CARD · 1 OCT 2026 */
 @media(max-width:700px){
-  /* Pull the hero itself above the first viewport edge so the video reaches behind the fixed nav. */
+  /* Let the hero/video reach all the way behind the iOS top safe-area. */
   .hero{
-    margin-top:-64px!important;
-    min-height:calc(100svh + 100px)!important;
+    margin-top:-110px!important;
+    min-height:calc(100svh + 146px)!important;
     overflow:hidden!important;
   }
   .hero-media{
-    inset:-64px 0 -42px!important;
+    inset:-110px 0 -42px!important;
     overflow:hidden!important;
   }
   .hero-overlay{
-    inset:-64px 0 -42px!important;
+    inset:-110px 0 -42px!important;
   }
-  /* Preserve the current headline/card vertical position after moving the hero upward. */
-  .hero-grid{padding-top:192px!important;}
+  /* The hero now starts higher, so move only the headline/card block slightly down. */
+  .hero-main{transform:translateY(20px)!important;}
 
   /* No decorative counter numbers in the frosted disciplines card. */
   .hero .hero-main .hero-discipline-row::after{content:none!important;display:none!important}
