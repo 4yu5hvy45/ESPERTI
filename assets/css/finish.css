@@ -1,0 +1,40 @@
+/* ESPERTI finish layer: paper grain + dot cursor (shared by all pages) */
+
+/* Grain. Paper tile: ink specks (invisible on dark, so dark sections stay clean).
+   Optional dark film grain: add class "grain-dark" to <html> to switch it on. No blend modes (cheaper on phones). */
+:root{--grain-paper:.9;--grain-dark:.55}
+html::after{
+  content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
+  background:url(../grain-paper.png) 0 0/192px 192px repeat;opacity:var(--grain-paper);
+}
+html.grain-dark::before{
+  content:"";position:fixed;inset:0;z-index:49;pointer-events:none;
+  background:url(../grain-dark.png) 0 0/192px 192px repeat;opacity:var(--grain-dark);
+}
+/* Keep the hero and project photography crisp: lift them above the grain layer */
+.hv,.hero-media,.project-main,.project-side,.discipline-gallery-images,.founder-photo,*:has(>.project-hero-still){z-index:51}
+@media print{html::after,html::before{display:none}}
+@media (prefers-reduced-transparency:reduce){html::after,html::before{display:none}}
+
+/* Dot cursor: only on devices with a real hover pointer */
+.dot-cursor{display:none}
+@media (hover:hover) and (pointer:fine){
+  html.has-dot-cursor,html.has-dot-cursor *{cursor:none!important}
+  html.has-dot-cursor input,html.has-dot-cursor textarea,html.has-dot-cursor select,html.has-dot-cursor [contenteditable]{cursor:text!important}
+  .dot-cursor{
+    display:block;position:fixed;left:0;top:0;width:0;height:0;z-index:2147483600;pointer-events:none;
+    opacity:0;transition:opacity .2s ease;will-change:transform;
+  }
+  .dot-cursor.is-on{opacity:1}
+  .dot-cursor i{
+    position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;
+    background:#f15a24;box-shadow:0 0 0 1px rgba(255,255,255,.35);
+    transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .2s ease,box-shadow .2s ease;
+  }
+  .dot-cursor.is-link i{transform:scale(3.2);background:rgba(241,90,36,.22);box-shadow:0 0 0 1px #f15a24}
+  .dot-cursor.is-light i{background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+  .dot-cursor.is-link.is-light i{background:rgba(255,255,255,.25);box-shadow:0 0 0 1px #fff}
+  .dot-cursor.is-text{opacity:0!important}
+  .dot-cursor.is-down i{transform:scale(.8)}
+  .dot-cursor.is-link.is-down i{transform:scale(2.6)}
+}
