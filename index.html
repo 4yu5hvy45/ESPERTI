@@ -3452,6 +3452,11 @@ addEventListener('pre-go',function(){done=true;paint(1)});
           <span class="brief-index">PROJECT BRIEF RECEIVED</span>
           <h3>Your project brief is ready.</h3>
           <p>Your email client has been prepared with the project details. ESPERTI can review the brief and respond with the next step.</p>
+          <div class="brief-success-actions">
+            <a class="brief-success-btn" id="briefMailAgain" href="mailto:MDL@esperti.uk">Open email again</a>
+            <button type="button" class="brief-success-btn" id="briefCopy">Copy brief</button>
+          </div>
+          <p class="brief-success-note">No email app opened? Copy the brief and send it to MDL@esperti.uk.</p>
         </div>
       </div>
     </div>
@@ -3579,6 +3584,19 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
     const options=document.getElementById('briefOptions'), field=document.getElementById('briefFieldWrap');
     const next=document.getElementById('briefNext'), back=document.getElementById('briefBack'), hint=document.getElementById('briefHint'), progress=document.getElementById('briefProgress');
     const success=document.getElementById('briefSuccess');
+    const mqPhone=window.matchMedia('(max-width:700px)');
+    const reduceBriefMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+    const AUTO_ADVANCE_ON_PHONE=true; /* single-choice steps move on after a tap on phones; set false to disable */
+    let advanceTimer=null;
+    function scrollBriefIntoView(){
+      const head=document.querySelector('.project-brief-head');
+      if(!head||!mqPhone.matches) return;
+      const top=head.getBoundingClientRect().top;
+      if(top>=70&&top<window.innerHeight*.5) return; /* already comfortably in view */
+      if(window.__lenis&&window.__lenis.scrollTo){window.__lenis.scrollTo(head,{offset:-84,duration:reduceBriefMotion.matches?0:.7});}
+      else{window.scrollTo({top:window.scrollY+top-84,behavior:reduceBriefMotion.matches?'auto':'smooth'});}
+    }
+    function goNext(){ if(next.disabled) return; next.click(); }
 
     function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
     function sectorOptions(){
@@ -3602,6 +3620,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
         </button>`;
       }).join('');
       options.hidden=false; field.hidden=true;
+      options.classList.toggle('is-compact',opts.length>0&&opts.every(o=>!o[1]));
       options.querySelectorAll('.brief-option').forEach(btn=>btn.addEventListener('click',()=>{
         const value=btn.dataset.value;
         if(steps[step].type==='multi'){
@@ -3612,37 +3631,45 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
           if(steps[step].key==='type'){ state.sector=null; }
         }
         renderOptions(); updateNav();
+        if(AUTO_ADVANCE_ON_PHONE&&mqPhone.matches&&steps[step].type!=='multi'&&step<steps.length-1){
+          clearTimeout(advanceTimer);
+          advanceTimer=setTimeout(()=>{ if(hasAnswer()&&steps[step].type!=='multi'){ step++; renderStep(); scrollBriefIntoView(); } },320);
+        }
       }));
     }
     function renderLocation(){
       options.innerHTML='';
-      options.hidden=false; field.hidden=false;
+      options.hidden=false; field.hidden=false; options.classList.remove('is-compact');
       const regions=[['Ireland','Delivery across the Republic of Ireland.'],['UK','Delivery across England, Scotland, Wales or Northern Ireland.'],['International','Projects outside the UK and Ireland.']];
       options.innerHTML=regions.map(o=>{
         const selected=state.locationRegion===o[0];
         return `<button type="button" class="brief-option is-multi ${selected?'is-selected':''}" data-region="${escapeHtml(o[0])}" aria-pressed="${selected}"><div><b>${o[0]}</b><span>${o[1]}</span></div><i class="brief-check">${selected?'✓':''}</i></button>`;
       }).join('');
-      field.innerHTML=`<label class="brief-field-label" for="briefLocation">Town, city or postcode</label><input class="brief-text" id="briefLocation" type="text" placeholder="e.g. Belfast, Dublin, Bristol" value="${escapeHtml(state.location||'')}">`;
+      field.innerHTML=`<label class="brief-field-label" for="briefLocation">Town, city or postcode</label><input class="brief-text" id="briefLocation" type="text" inputmode="text" enterkeyhint="next" autocapitalize="words" autocomplete="off" placeholder="e.g. Belfast, Dublin, Bristol" value="${escapeHtml(state.location||'')}">`;
       field.querySelector('input').addEventListener('input',e=>{state.location=e.target.value;updateNav();});
+      field.querySelector('input').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); e.target.blur(); goNext(); } });
       options.querySelectorAll('[data-region]').forEach(btn=>btn.addEventListener('click',()=>{state.locationRegion=btn.dataset.region;renderLocation();updateNav();}));
     }
     function renderContact(){
-      options.hidden=true; field.hidden=false;
+      options.innerHTML=''; options.hidden=true; field.hidden=false; options.classList.remove('is-compact');
       field.innerHTML=`<div class="brief-contact-grid">
-        <label><span>Name *</span><input id="briefName" required autocomplete="name" placeholder="Your name"></label>
-        <label><span>Company</span><input id="briefCompany" autocomplete="organization" placeholder="Company name"></label>
-        <label><span>Email *</span><input id="briefEmail" type="email" required autocomplete="email" placeholder="you@company.com"></label>
-        <label><span>Phone</span><input id="briefPhone" type="tel" autocomplete="tel" placeholder="+44 ..."></label>
-        <label><span>Anything else?</span><textarea id="briefNotes" placeholder="Project notes, timings or anything useful to know."></textarea></label>
+        <label><span>Name *</span><input id="briefName" required autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Your name"></label>
+        <label><span>Company</span><input id="briefCompany" autocomplete="organization" autocapitalize="words" enterkeyhint="next" placeholder="Company name"></label>
+        <label><span>Email *</span><input id="briefEmail" type="email" inputmode="email" required autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next" placeholder="you@company.com"></label>
+        <label><span>Phone</span><input id="briefPhone" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="+44 ..."></label>
+        <label><span>Anything else?</span><textarea id="briefNotes" rows="3" enterkeyhint="done" placeholder="Project notes, timings or anything useful to know."></textarea></label>
       </div>`;
       ['Name','Company','Email','Phone','Notes'].forEach(k=>{
         const id='brief'+k; const el=document.getElementById(id);
         el.value=state.contact[k.toLowerCase()]||'';
         el.addEventListener('input',e=>{state.contact[k.toLowerCase()]=e.target.value;updateNav();});
+        /* keep the focused field clear of the phone keyboard */
+        el.addEventListener('focus',()=>{ if(mqPhone.matches) setTimeout(()=>{ try{el.scrollIntoView({block:'center',behavior:reduceBriefMotion.matches?'auto':'smooth'});}catch(_){} },280); });
       });
     }
     function renderStep(){
       const s=steps[step];
+      projectBrief.dataset.type=s.type;
       label.textContent=`PROJECT BRIEF · ${String(step+1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
       q.innerHTML=escapeHtml(s.label).replace(/\?$/,'<em>?</em>');
       intro.textContent=s.intro;
@@ -3692,13 +3719,25 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})
     }
     next.addEventListener('click',()=>{
       if(!hasAnswer()) return;
-      if(step<steps.length-1){step++;renderStep();return;}
+      clearTimeout(advanceTimer);
+      if(step<steps.length-1){step++;renderStep();scrollBriefIntoView();return;}
       const subject=`ESPERTI project brief — ${state.contact.company||state.contact.name||state.type||'New enquiry'}`;
       const body=summary();
-      window.location.href='mailto:MDL@esperti.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      const mailto='mailto:MDL@esperti.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      const again=document.getElementById('briefMailAgain'), copy=document.getElementById('briefCopy');
+      if(again) again.href=mailto;
+      if(copy) copy.onclick=()=>{
+        const done=()=>{copy.textContent='Copied ✓';setTimeout(()=>{copy.textContent='Copy brief';},2200);};
+        if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(body).then(done,()=>{});
+        else{const t=document.createElement('textarea');t.value=body;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();try{document.execCommand('copy');done();}catch(_){}t.remove();}
+      };
+      window.location.href=mailto;
       projectBrief.hidden=true; success.hidden=false;
+      scrollBriefIntoView();
     });
-    back.addEventListener('click',()=>{if(step>0){step--;renderStep();}});
+    back.addEventListener('click',()=>{clearTimeout(advanceTimer);if(step>0){step--;renderStep();scrollBriefIntoView();}});
+    /* a single text field + Enter would otherwise submit the form and reload the page */
+    projectBrief.addEventListener('submit',e=>{e.preventDefault();goNext();});
     renderStep();
   }
 
@@ -6981,6 +7020,109 @@ html body .nav .nav-projects-menu{border-color:rgba(255,255,255,.14)!important;b
 html body .intro-dark .mx-svg .mx-sun,html body .mx-svg .mx-sun{fill:url(#mxSunG)!important;stroke:rgba(255,255,255,.20)!important;stroke-width:.8px!important}
 </style>
 <script>if(matchMedia("(prefers-reduced-motion: reduce)").matches)document.querySelectorAll("#mxSunG animate").forEach(function(a){a.remove()})</script>
+<style id="brief-mobile-pass-11oct2026">
+/* ESPERTI project brief: phone optimisation. Desktop (>700px) is untouched except for the shared button styles. */
+html body .brief-options[hidden],html body .brief-field-wrap[hidden]{display:none!important}
+.brief-success-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.brief-success-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border:1px solid rgba(255,255,255,.34);background:transparent;color:#f7f4eb;font:inherit;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;touch-action:manipulation}
+.brief-success-btn:hover{background:#dbe7a0;border-color:#dbe7a0;color:#173522}
+.brief-success p.brief-success-note{margin-top:14px;font-size:12px;opacity:.7}
+html body .brief-next:disabled{opacity:.42!important;cursor:not-allowed!important}
+html body .brief-option,html body .brief-next,html body .brief-back{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+html body .brief-option:focus-visible,html body .brief-next:focus-visible,html body .brief-back:focus-visible,html body .brief-contact-grid :is(input,textarea):focus-visible,html body .brief-text:focus-visible{outline:2px solid #dbe7a0!important;outline-offset:2px}
+
+/* touch devices: no sticky hover states, lighter background effects */
+@media(hover:none){
+  html body .brief-option:hover{transform:none!important;background:rgba(247,244,235,.12)!important;border-color:rgba(255,255,255,.34)!important}
+  html body .brief-option.is-selected:hover{background:#dbe7a0!important;border-color:#dbe7a0!important}
+  html body .brief-option:active{transform:scale(.985)!important;background:rgba(247,244,235,.22)!important}
+  html body .brief-option.is-selected:active{background:#dbe7a0!important}
+  html body .brief-next:hover{background:#f3f0e8!important}
+  html body .brief-next:active{background:#dbe7a0!important}
+}
+@media(pointer:coarse){
+  html body .project-brief-section:after{display:none!important} /* full-section soft-light noise is costly on phones */
+}
+
+@keyframes briefIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media(max-width:700px){
+  html body .project-brief-section{padding:48px 0 calc(56px + env(safe-area-inset-bottom,0px))!important}
+  html body #contact .project-brief-head{scroll-margin-top:84px}
+  /* root cause of the squashed label/overlap: a desktop override forced a 2-column header grid at every width */
+  html body .project-brief-head{grid-template-columns:minmax(0,1fr)!important;gap:12px!important;margin-bottom:22px!important}
+  html body .project-brief-head>div{min-width:0!important}
+  html body .brief-index{display:block!important;white-space:nowrap!important;font-size:12px!important;letter-spacing:.12em!important}
+  html body #briefQuestion{font-size:clamp(26px,8vw,34px)!important;line-height:1.04!important;letter-spacing:-.035em!important;margin:10px 0 0!important}
+  html body #briefIntro{margin:0!important}
+  html body .project-brief-head p{font-size:14px!important;line-height:1.5!important;max-width:none!important}
+
+  /* the form must not clip, otherwise the sticky nav cannot stick */
+  html body #projectBrief{overflow:visible!important;padding:16px 14px 0!important;background:rgba(7,24,14,.5)!important}
+  html body .brief-progress{margin-bottom:18px!important;height:3px!important}
+  html body .brief-stage{min-height:0!important}
+
+  /* options: one comfortable column with 56px+ tap targets */
+  html body .brief-options{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
+  html body .brief-options>*{animation:briefIn .28s cubic-bezier(.2,.7,.2,1) both}
+  html body .brief-options>*:nth-child(2){animation-delay:.03s}html body .brief-options>*:nth-child(3){animation-delay:.06s}
+  html body .brief-options>*:nth-child(4){animation-delay:.09s}html body .brief-options>*:nth-child(5){animation-delay:.12s}
+  html body .brief-options>*:nth-child(6){animation-delay:.15s}html body .brief-options>*:nth-child(7){animation-delay:.18s}
+  html body .brief-options>*:nth-child(n+8){animation-delay:.21s}
+  html body .brief-option{
+    position:relative!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;
+    min-height:64px!important;padding:13px 14px 13px 16px!important;overflow:visible!important;min-width:0!important;
+    border-width:1px!important;border-radius:0!important;text-align:left}
+  html body .brief-option>div{min-width:0;flex:1 1 auto}
+  html body .brief-option b{font-size:18px!important;line-height:1.12!important;letter-spacing:-.02em!important;padding-right:0!important;overflow-wrap:break-word!important;word-break:normal!important;hyphens:none!important}
+  html body .brief-option span{display:block!important;max-width:none!important;margin-top:5px!important;font-size:12.5px!important;line-height:1.4!important;letter-spacing:.01em!important}
+  html body .brief-option .brief-check{position:static!important;flex:none!important;width:22px!important;height:22px!important;margin:0!important;font-size:12px!important;border-width:1.5px!important;border-radius:50%!important;opacity:1!important}
+  html body .brief-option.is-selected{box-shadow:none!important}
+
+  /* short, description-less lists (budget, scope) go two-up to cut scrolling */
+  html body .brief-options.is-compact{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  html body .brief-options.is-compact .brief-option{min-height:60px!important;padding:10px 10px 10px 12px!important;gap:8px!important}
+  html body .brief-options.is-compact .brief-option b{font-size:15.5px!important;line-height:1.15!important}
+  html body .brief-options.is-compact .brief-option .brief-check{width:18px!important;height:18px!important;font-size:10px!important}
+
+  /* location step */
+  html body .brief-field-wrap{max-width:none!important;margin-top:14px;animation:briefIn .28s .1s both}
+  html body .brief-field-label,html body .brief-contact-grid label>span{font-size:12px!important;letter-spacing:.1em!important;margin-bottom:7px!important}
+
+  /* inputs: 16px text stops iOS zooming on focus, 52px high */
+  html body .brief-text,html body .brief-select,html body .brief-contact-grid input,html body .brief-contact-grid textarea{font-size:16px!important;border-radius:0!important;-webkit-appearance:none;appearance:none}
+  html body .brief-text,html body .brief-contact-grid input{height:52px!important;padding:0 14px!important}
+  html body .brief-contact-grid textarea{min-height:104px!important;padding:13px 14px!important;resize:none!important}
+  html body .brief-contact-grid{grid-template-columns:1fr!important;gap:12px!important;animation:briefIn .28s both}
+  html body .brief-contact-grid label:last-child{grid-column:auto!important}
+
+  /* nav: pinned to the bottom of the screen while choosing, so Continue is always reachable */
+  html body .brief-nav{
+    position:sticky!important;bottom:0;z-index:5;
+    display:grid!important;grid-template-columns:92px minmax(0,1fr)!important;gap:10px!important;align-items:center!important;
+    margin:18px -14px 0!important;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px))!important;
+    background:linear-gradient(180deg,rgba(9,27,16,.0),rgba(9,27,16,.94) 22%)!important;
+    border-top:0!important}
+  html body #projectBrief[data-type="location"] .brief-nav,
+  html body #projectBrief[data-type="contact"] .brief-nav{position:relative!important;background:none!important;padding-top:6px!important}
+  html body .brief-back,html body .brief-next{height:52px!important;min-height:52px!important;font-size:12.5px!important;letter-spacing:.1em!important;padding:0 16px!important;margin:0!important;grid-row:1!important}
+  html body .brief-back{grid-column:1!important}
+  html body .brief-next{grid-column:2!important;justify-self:stretch!important;width:100%!important;min-width:0!important;display:inline-flex;align-items:center;justify-content:center}
+  /* the hint is redundant next to a disabled button; keep it for screen readers */
+  html body .brief-hint{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;grid-column:auto!important;grid-row:auto!important}
+  html body #projectBrief[data-type="contact"] .brief-hint{position:static!important;grid-column:1/-1!important;grid-row:2!important;width:auto!important;height:auto!important;margin:4px 0 0!important;overflow:visible!important;clip:auto!important;white-space:normal!important;font-size:12px!important;text-align:center}
+
+  html body .brief-success{padding:22px 18px!important;gap:16px!important}
+  html body .brief-success h3{font-size:clamp(32px,10vw,44px)!important}
+  html body .brief-success-btn{flex:1 1 140px}
+}
+@media(max-width:700px) and (max-height:520px){
+  html body .brief-nav{position:relative!important;background:none!important} /* landscape phones: don't eat the screen */
+}
+@media(prefers-reduced-motion:reduce){
+  html body .brief-options>*,html body .brief-field-wrap,html body .brief-contact-grid{animation:none!important}
+}
+</style>
 <script src="assets/js/cursor.js" defer></script>
 </body>
 </html>
