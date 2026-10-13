@@ -2813,6 +2813,45 @@ html body footer.ft#site-footer .ft-tagline{color:rgba(25,26,23,.58)!important}
 }
 </style>
 <link rel="stylesheet" href="assets/css/finish.css">
+<style id="mx-scroll-story">
+/* sticky needs a non-scrolling ancestor: overflow:hidden would break it, overflow:clip does not */
+html body #about.intro-dark{overflow:visible!important;overflow:clip!important;padding-top:clamp(56px,6vw,96px)!important;padding-bottom:clamp(56px,6vw,96px)!important}
+#about .ms-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);column-gap:clamp(32px,5vw,88px);align-items:start;position:relative}
+#about .ms-copy{border-right:1px solid rgba(246,243,236,.16);padding-right:clamp(32px,4.5vw,72px)}
+/* chapters */
+#about .ms-ch{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(48px,9vh,110px) 0}
+#about.js-ms .ms-ch{opacity:.3;transition:opacity .5s ease}
+#about.js-ms .ms-ch.on{opacity:1}
+#about .ms-title{display:flex;flex-wrap:nowrap;align-items:baseline;margin:0 0 24px;padding-bottom:.08em;font:500 clamp(30px,3.6vw,60px)/1 var(--disp);letter-spacing:-.045em;text-transform:uppercase;color:#f6f3ec}
+#about .ms-title em{font-style:normal;background:linear-gradient(100deg,#ffb27a 0%,#f15a24 34%,#ff8a45 54%,#dd4b18 78%,#bd3a12 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+#about .ms-intro{margin:0;max-width:62ch;font-size:clamp(15px,1.15vw,19px);line-height:1.58;color:rgba(246,243,236,.8)}
+#about .ms-sub{display:flex;align-items:center;gap:14px;width:100%;margin:34px 0 12px;font:400 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ember)}
+#about .ms-sub:after{content:"";flex:1;height:1px;background:rgba(246,243,236,.16)}
+#about .ms-subp{margin:0 0 6px;max-width:62ch;font-size:clamp(14px,1.02vw,16.5px);line-height:1.55;color:rgba(246,243,236,.66)}
+#about .ms-list{list-style:none;margin:10px 0 0;padding:0;width:100%;border-top:1px solid rgba(246,243,236,.16)}
+#about .ms-list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:6px;padding:15px 0;border-bottom:1px solid rgba(246,243,236,.12)}
+#about .ms-n{font:400 9px/1.9 var(--mono);font-style:normal;letter-spacing:.12em;color:var(--ember)}
+#about .ms-list strong{display:block;margin-bottom:5px;font:500 clamp(16px,1.35vw,21px)/1.2 var(--disp);letter-spacing:-.02em;color:#f6f3ec}
+#about .ms-list span{display:block;font-size:clamp(13px,.98vw,15.5px);line-height:1.52;color:rgba(246,243,236,.64)}
+#about .ms-quote{margin:clamp(40px,6vh,72px) 0 0;padding-top:22px;width:100%;border-top:2px solid #9aac5e;color:#9aac5e;font:400 clamp(22px,2.1vw,32px)/1.12 var(--disp);letter-spacing:-.04em;text-wrap:balance}
+/* sticky drawing */
+#about .ms-stage{align-self:stretch;position:relative;margin-right:calc(-1*var(--bleed,0px) - 1.6vw)}
+#about .ms-sticky{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:84px 0 28px}
+#about .ms-stage .mx-svg{display:block;width:100%;height:auto;max-height:calc(100svh - 230px);margin:0;overflow:visible}
+#about .ms-stage .mx-ctl{margin:16px calc(var(--bleed,0px) + 1.6vw + 24px) 0 0}
+/* tabs become a scroll-progress indicator */
+html body #about .mx-dot i,html body #about .mx-dot.on i{animation:none!important;width:calc(var(--p,0)*100%)!important;transition:none}
+@media(max-width:860px){
+  #about .ms-layout{grid-template-columns:1fr;row-gap:0}
+  #about .ms-copy{order:1;border-right:0;padding-right:0}
+  #about .ms-stage{order:0;align-self:start;position:sticky;top:72px;z-index:3;margin:0;padding:6px 0 10px;background:#0d0e0c;box-shadow:0 0 0 100vmax #0d0e0c;clip-path:inset(0 -100vmax)}
+  #about .ms-sticky{position:static;height:auto;padding:0}
+  #about .ms-stage .mx-svg{max-height:30svh;margin:0 auto}
+  #about .ms-stage .mx-ctl{margin:8px 0 0}
+  #about .ms-ch{min-height:0;padding:44px 0 36px}
+  #about .ms-title{font-size:clamp(26px,7.4vw,42px)}
+}
+@media(prefers-reduced-motion:reduce){#about.js-ms .ms-ch,</style>
 </head>
 <body>
 <div id="pre" aria-hidden="true"><canvas id="preC"></canvas><div class="pre-ui"><span class="pre-k">Loading</span><span class="pre-n">0</span><span class="pre-bar"><i></i></span></div></div>
@@ -3173,20 +3212,37 @@ addEventListener('pre-go',function(){done=true;paint(1)});
 
 <section class="section intro-dark" id="about">
   <div class="container">
-    <div class="mx-layout reveal">
-      <div class="intro-copy-dark mx-copy">
-  <div class="mx-unit" aria-hidden="true">
-    <div class="mx-word"><span>Multi-</span><span class="mx-swap"><b>disciplined</b><b>dimensional</b><b>project</b></span></div>
-    <p class="mx-cap" id="mxCap"></p>
-  </div>
-        <p class="body-copy">ESPERTI™ integrates construction, commercial and project management expertise across construction, refurbishment, fit-out and heritage projects throughout the Republic of Ireland and United Kingdom, extending into the EU.</p>
-        <p class="body-copy">From concept to handover, we deliver a coordinated, accountable service built on experience, commercial control and attention to detail.</p>
-        <p class="body-copy"><strong>One team. Four disciplines. One accountable delivery model.</strong></p>
-        <p class="intro-quote">Building confidence through experience, expertise and delivery.</p>
+    <div class="ms-layout">
+      <div class="ms-copy">
+      <article class="ms-ch" id="ms-0" data-s="0">
+        <h2 class="ms-title"><span>Multi-</span><em>disciplined</em></h2>
+        <p class="ms-intro">Specialising in the delivery of high-quality environments for the hospitality, retail and leisure sectors. We understand that in these industries, the built environment is central to brand identity, customer experience and commercial performance. Our integrated delivery model brings design coordination, structural works, mechanical and electrical services, specialist joinery and finishing together under a single, accountable team.</p>
+        <h3 class="ms-sub">Our Approach</h3>
+        <p class="ms-subp">Our multi-disciplinary capability allows us to manage every phase of a project through one coordinated team, reducing interface risk and keeping programmes on track from inception to completion.</p>
+        <ul class="ms-list" id="ms-list-0"><li><i class="ms-n" aria-hidden="true">01</i><div><strong>Programme Certainty</strong><span>Trading dates drive everything. Cross-disciplinary planning and tightly managed sequencing protect opening schedules and minimise downtime.</span></div></li><li><i class="ms-n" aria-hidden="true">02</i><div><strong>Brand Integrity</strong><span>We work closely with operators, designers and brand teams to ensure every detail is delivered faithfully to the intended concept and specification.</span></div></li><li><i class="ms-n" aria-hidden="true">03</i><div><strong>Single-Point Accountability</strong><span>A dedicated project leadership team takes full responsibility for programme, cost and quality.</span></div></li><li><i class="ms-n" aria-hidden="true">04</i><div><strong>Consistent Rollout</strong><span>For multi-site operators, our standardised processes and shared quality controls ensure uniform results across every location.</span></div></li><li><i class="ms-n" aria-hidden="true">05</i><div><strong>Live Environment Expertise</strong><span>We manage works within occupied and trading premises with careful phasing, robust health and safety controls and minimal disruption to staff and customers.</span></div></li></ul>
+        
+      </article>
+      <article class="ms-ch" id="ms-1" data-s="1">
+        <h2 class="ms-title"><span>Multi-</span><em>dimensional</em></h2>
+        <p class="ms-intro">Delivering exceptional environments for the hospitality, retail and leisure sectors. We recognise that a successful venue is more than a building. It is a commercial asset, a brand statement and a customer experience, and each of these dimensions must be delivered with equal precision. Our approach brings technical delivery, commercial insight, design sensitivity and operational awareness together in a single, integrated service.</p>
+        <h3 class="ms-sub">Our Dimensions</h3>
+        
+        <ul class="ms-list" id="ms-list-1"><li><i class="ms-n" aria-hidden="true">01</i><div><strong>Technical</strong><span>Specialist capability across structural works, mechanical and electrical services, joinery and finishing, delivered to exacting standards of quality, safety and compliance.</span></div></li><li><i class="ms-n" aria-hidden="true">02</i><div><strong>Commercial</strong><span>Transparent cost management and robust programme control that protect budgets, safeguard trading dates and support return on investment.</span></div></li><li><i class="ms-n" aria-hidden="true">03</i><div><strong>Creative</strong><span>Close collaboration with operators, architects and brand teams to ensure every detail reflects the intended concept and elevates the guest or customer experience.</span></div></li><li><i class="ms-n" aria-hidden="true">04</i><div><strong>Operational</strong><span>Practical understanding of how venues trade, enabling careful phasing, minimal disruption in live environments and seamless handover into operation.</span></div></li><li><i class="ms-n" aria-hidden="true">05</i><div><strong>Relational</strong><span>A dedicated leadership team providing single-point accountability and building long-term partnerships founded on trust and clear communication.</span></div></li></ul>
+        
+      </article>
+      <article class="ms-ch" id="ms-2" data-s="2">
+        <h2 class="ms-title"><span>Multi-</span><em>project</em></h2>
+        <p class="ms-intro">Purpose-built to deliver programmes of work across the hospitality, retail and leisure sectors. We are structured to manage a number of varied projects running concurrently, from a boutique restaurant fit-out to a hotel refurbishment and a retail rollout, each delivered with the same discipline, capacity and commitment. Our integrated delivery model allows us to run multiple projects of differing scale, type and complexity at the same time without compromising quality, programme or cost control.</p>
+        <h3 class="ms-sub">Our Approach</h3>
+        
+        <ul class="ms-list" id="ms-list-2"><li><i class="ms-n" aria-hidden="true">01</i><div><strong>Concurrent Delivery</strong><span>Dedicated project teams operate in parallel, each tailored to the demands of its own site, while shared management oversight ensures no project is ever treated as secondary.</span></div></li><li><i class="ms-n" aria-hidden="true">02</i><div><strong>Scalable Capacity</strong><span>Established resources and a deep supply chain allow us to mobilise quickly and take on new projects without stretching existing commitments.</span></div></li><li><i class="ms-n" aria-hidden="true">03</i><div><strong>Adaptable Expertise</strong><span>Our teams move fluidly between project types, applying specialist knowledge to everything from a high-end hotel bar to a multi-unit retail programme or a large-scale leisure facility.</span></div></li><li><i class="ms-n" aria-hidden="true">04</i><div><strong>Consistent Standards</strong><span>Standardised processes, specifications and quality controls ensure uniform results at every site, protecting brand integrity across your estate.</span></div></li><li><i class="ms-n" aria-hidden="true">05</i><div><strong>Portfolio Visibility</strong><span>Centralised planning and reporting give you clear oversight of progress, cost and risk across all live projects, not just individual sites.</span></div></li><li><i class="ms-n" aria-hidden="true">06</i><div><strong>Single-Point Accountability</strong><span>A dedicated leadership team provides one point of contact and consistent communication, however many projects are in progress.</span></div></li><li><i class="ms-n" aria-hidden="true">07</i><div><strong>Efficiency Through Experience</strong><span>Lessons learned, proven methods and established supplier relationships are carried from project to project, improving speed and value with every delivery.</span></div></li><li><i class="ms-n" aria-hidden="true">08</i><div><strong>Live Environment Expertise</strong><span>We manage works within occupied and trading premises with careful phasing and minimal disruption to staff and customers.</span></div></li></ul>
+        <p class="ms-quote">Building confidence through experience, expertise and delivery.</p>
+      </article>
       </div>
-      <div class="mx-panel" id="mx">
-  <p class="mx-sr">ESPERTI is multi-disciplined, multi-dimensional and multi-project.</p>
-  <svg class="mx-svg" viewBox="0 0 800 600" role="img" aria-label="Line drawing of a tower crane beside a heritage building elevation, shifting between trades, dimensions and several projects"><defs>
+      <div class="ms-stage" id="mx">
+        <div class="ms-sticky">
+          <p class="mx-sr">ESPERTI is multi-disciplined, multi-dimensional and multi-project.</p>
+          <svg class="mx-svg" viewBox="0 0 800 600" role="img" aria-label="Line drawing of a tower crane beside a heritage building elevation, shifting between trades, dimensions and several projects"><defs>
 <pattern id="mxp1" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8L8 0M-2 2L2-2M6 10L10 6" stroke="#f4f1e9" stroke-width="1" opacity=".5"/></pattern>
 <pattern id="mxp2" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.4" fill="#f4f1e9" opacity=".55"/></pattern>
 <pattern id="mxp3" width="16" height="8" patternUnits="userSpaceOnUse"><path d="M0 .5H16M0 4.5H16M4 .5V4.5M12 4.5V8.5" stroke="#f4f1e9" stroke-width=".9" fill="none" opacity=".55"/></pattern>
@@ -3201,36 +3257,52 @@ addEventListener('pre-go',function(){done=true;paint(1)});
 <g class="mx-sky"><g class="mx-tag" style="--d:0.6s"><rect class="mx-em" x="372" y="142" width="6" height="6"/><text class="mx-t" x="381" y="148">P-01</text></g></g>
 <g class="mx-w"><rect x="104" y="44" width="14" height="496" fill="url(#mxl)"/><rect x="40" y="30" width="620" height="14" fill="url(#mxl)"/><path d="M111 30V2M111 2L40 30M111 2L610 30"/></g><rect class="mx-ink" x="40" y="44" width="26" height="24"/><rect class="mx-ink" x="92" y="532" width="38" height="8"/>
 <g class="mx-tr"><rect class="mx-ink" x="-9" y="44" width="18" height="8"/><path class="mx-w" d="M0 52V98"/><rect class="mx-em" x="-7" y="98" width="14" height="9"/><rect class="mx-w" x="-16" y="107" width="32" height="12"/></g></svg>
-  <div class="mx-ctl" role="group" aria-label="Choose a view">
-    <button class="mx-dot" type="button" aria-label="Show multi-disciplined"><i></i>Disciplined</button>
-    <button class="mx-dot" type="button" aria-label="Show multi-dimensional"><i></i>Dimensional</button>
-    <button class="mx-dot" type="button" aria-label="Show multi-project"><i></i>Project</button>
-  </div>
-</div>
+          <div class="mx-ctl" role="group" aria-label="Jump to a chapter">
+            <button class="mx-dot" type="button" aria-label="Go to multi-disciplined"><i></i>Disciplined</button>
+            <button class="mx-dot" type="button" aria-label="Go to multi-dimensional"><i></i>Dimensional</button>
+            <button class="mx-dot" type="button" aria-label="Go to multi-project"><i></i>Project</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 <script>
-/* MULTI- motion graphic: one scene, three views; the suffix word changes with the drawing. */
+/* MULTI- scroll story: sticky drawing on the right, chapters scroll on the left.
+   Works with Lenis because Lenis scrolls the real window (no transformed wrapper),
+   so position:sticky and getBoundingClientRect() stay accurate. */
 (function(){
-  var p=document.getElementById('mx');if(!p)return;
-  var svg=p.querySelector('.mx-svg'),ws=[].slice.call(p.closest('.mx-layout').querySelectorAll('.mx-swap b')),ds=[].slice.call(p.querySelectorAll('.mx-dot')),cap=document.getElementById('mxCap'),
-      caps=['Construction, refurbishment, fit-out and heritage under one team.','Drawn, measured and built in every dimension.','Several sites running at once, one standard across all of them.'],
-      reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,GAP=3000,i=-1,t=0,vis=false;
-  function restart(){clearTimeout(t);if(!reduce&&vis)t=setTimeout(function(){go((i+1)%3)},GAP)}
-  function go(n){
-    if(n===i)return;var prev=i;i=n;svg.setAttribute('data-s',n);
-    ws.forEach(function(w,k){w.className=k===n?'on':(k===prev?'out':'')});
-    ds.forEach(function(d,k){d.classList.toggle('on',k===n);d.setAttribute('aria-pressed',k===n)});
-    cap.classList.add('chg');setTimeout(function(){cap.textContent=caps[n];cap.classList.remove('chg')},reduce?0:240);
-    restart();
+  var root=document.getElementById('about');if(!root)return;
+  var lay=root.querySelector('.ms-layout'),stage=root.querySelector('.ms-stage'),svg=root.querySelector('.mx-svg'),
+      chs=[].slice.call(root.querySelectorAll('.ms-ch')),dots=[].slice.call(root.querySelectorAll('.mx-dot')),
+      reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,cur=-1,tick=false;
+  root.classList.add('js-ms');
+  function setState(n){
+    if(n===cur)return;cur=n;svg.setAttribute('data-s',n);
+    chs.forEach(function(c,k){c.classList.toggle('on',k===n)});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===n);if(k===n)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current')});
   }
-  ds.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
-  if('IntersectionObserver' in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)restart();else clearTimeout(t)},{threshold:.25}).observe(p)}
-  else{vis=true}
-  var lay=p.closest('.mx-layout');function bleed(){var r=lay.getBoundingClientRect(),w=document.documentElement.clientWidth;p.style.setProperty('--bleed',Math.max(0,w-r.right)+'px')}
-  bleed();addEventListener('resize',bleed);addEventListener('load',bleed);
-  go(0);
+  function frame(){
+    tick=false;var vh=innerHeight,mid=vh*.5,a=0,lr=lay.getBoundingClientRect();
+    if(lr.bottom<-300||lr.top>vh+300)return;
+    chs.forEach(function(c,k){
+      var r=c.getBoundingClientRect(),p=Math.min(1,Math.max(0,(mid-r.top)/r.height));
+      dots[k].style.setProperty('--p',p.toFixed(3));if(r.top<=mid)a=k;
+    });
+    setState(a);
+  }
+  function onScroll(){if(!tick){tick=true;requestAnimationFrame(frame)}}
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){bleed();onScroll()});
+  addEventListener('load',function(){bleed();onScroll()});
+  function bleed(){var r=lay.getBoundingClientRect(),w=document.documentElement.clientWidth;lay.style.setProperty('--bleed',Math.max(0,w-r.right)+'px')}
+  function goto(c){
+    var off=innerWidth<=860?-(stage.offsetHeight+72):0;
+    if(window.__lenis){window.__lenis.scrollTo(c,{offset:off,duration:reduce?0:1.2})}
+    else{scrollTo({top:c.getBoundingClientRect().top+scrollY+off,behavior:reduce?'auto':'smooth'})}
+  }
+  dots.forEach(function(d,k){d.addEventListener('click',function(){goto(chs[k])})});
+  bleed();setState(0);onScroll();
 })();
 </script>
 
